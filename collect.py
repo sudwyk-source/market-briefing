@@ -312,15 +312,31 @@ def fetch_quotes(symbols):
     return out, fails
 
 
+FINVIZ_URL = "https://finviz.com/api/map_perf.ashx?t=sec_all"
+
+
 def fetch_finviz_map():
-    """finviz 맵의 원본 데이터(되면). 그림이 아니라 종목별 등락률 JSON."""
-    r = get("https://finviz.com/api/map_perf.ashx?t=sec_all", timeout=25)
+    """finviz 맵의 원본 데이터(되면). 그림이 아니라 종목별 등락률 JSON.
+
+    맵 데이터가 아닌 응답을 'ok'로 통과시키지 않도록 모양을 엄격히 검사한다.
+    기대하는 모양: {티커: 등락률} 이 수십 개 이상.
+    """
+    r = get(FINVIZ_URL, timeout=25)
     if r.status_code != 200:
         raise RuntimeError(f"HTTP {r.status_code}")
-    d = r.json()
-    if not isinstance(d, dict) or not d:
-        raise RuntimeError("unexpected shape")
-    return d
+    try:
+        d = r.json()
+    except Exception:
+        raise RuntimeError(f"JSON 아님: {r.text[:80]!r}")
+    if not isinstance(d, dict):
+        raise RuntimeError(f"dict 아님: {type(d).__name__}")
+    rows = {k: v for k, v in d.items()
+            if isinstance(k, str) and 1 <= len(k) <= 6 and k.isupper()
+            and isinstance(v, (int, float)) and not isinstance(v, bool)}
+    if len(rows) < 50:
+        raise RuntimeError(f"맵 데이터 아님(티커형 항목 {len(rows)}개, 키 예시: "
+                           f"{list(d)[:5]})")
+    return rows
 
 
 # ─────────────────────────── 번들 ───────────────────────────
