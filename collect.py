@@ -103,7 +103,10 @@ def _photos(box):
             urls.append(m.group(1))
     for img in box.select("img.tgme_widget_message_photo, picture img, img[src^='https://']"):
         src = img.get("src")
-        if src and "emoji" not in src and src not in urls:
+        cls = " ".join(img.get("class") or [])
+        if not src or "emoji" in src or "user_photo" in cls or "author_photo" in cls:
+            continue          # 채널 아바타는 사진이 아니다
+        if src not in urls:
             urls.append(src)
     # 링크 프리뷰 썸네일은 섹터 맵이 아니므로 제외
     prev = box.select_one("a.tgme_widget_message_link_preview")
@@ -151,24 +154,34 @@ def parse_telegram(html: str):
     return out
 
 
-def download_images(posts, outdir: Path, channel: str, limit: int = 6):
-    """구간 내 게시물의 사진을 내려받아 파일로 저장. [(파일명, 게시물시각, 캡션)] 반환."""
+MIN_IMAGE_BYTES = 30000   # 아바타·작은 썸네일을 거른다. 섹터 맵은 훨씬 크다.
+
+
+def download_images(posts, outdir: Path, channel: str, limit: int = 10):
+    """게시물 사진을 최신순으로 내려받아 저장. [(파일명, 게시물시각, 캡션)] 반환.
+
+    섹터 맵은 장마감 직후에 올라오므로 최신 쪽부터 받는다.
+    URL이 같은 사진(채널 아바타 등)은 한 번만 받는다.
+    """
     outdir.mkdir(parents=True, exist_ok=True)
-    saved, n = [], 0
-    for p in posts:
+    saved, seen = [], set()
+    for p in sorted(posts, key=lambda q: q["dt"], reverse=True):
         for i, url in enumerate(p.get("photos") or []):
-            if n >= limit:
+            if len(saved) >= limit:
                 return saved
+            if url in seen:
+                continue
+            seen.add(url)
             name = f"{channel}_{p['dt']:%Y%m%d_%H%M}_{p['id'] or 0}_{i}.jpg"
             try:
                 r = get(url, timeout=40)
-                if r.status_code != 200 or len(r.content) < 5000:
+                if r.status_code != 200 or len(r.content) < MIN_IMAGE_BYTES:
                     continue
                 (outdir / name).write_bytes(r.content)
                 saved.append((name, p["dt"], (p.get("text") or "")[:120]))
-                n += 1
             except Exception:
                 continue
+    saved.sort(key=lambda t: t[1], reverse=True)
     return saved
 
 
