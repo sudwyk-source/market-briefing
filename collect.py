@@ -8,10 +8,9 @@
     python collect.py --session 0530        # 미장 마감 회차 (어제 22:00 ~ 지금)
     python collect.py --session 22          # 미장 개장 전 회차 (오늘 05:30 ~ 지금)
     python collect.py --session 22 --no-transcript   # 자막 생략(빠름)
-    python collect.py --session 0530 --quotes        # 시세까지(기본 off)
 
 필요 패키지:
-    pip install requests beautifulsoup4 lxml yfinance youtube-transcript-api
+    pip install requests beautifulsoup4 lxml youtube-transcript-api
 """
 
 import argparse
@@ -53,20 +52,6 @@ YOUTUBE = [
     ("UCVKdDIkp_AiioJiy9NoELgQ", "한희재의 투자교실"),
 ]
 
-# 관심종목 20개 + 지수·금리·환율·원자재
-WATCHLIST = ["NVDA", "AVGO", "ARM", "MRVL", "TSM", "MU", "SNDK",
-             "GOOG", "AMZN", "ORCL", "TSLA", "LITE", "AAOI",
-             "ETN", "BE", "GEV", "SOXX", "SPYM", "QQQM", "AIPO"]
-
-MACRO = {
-    "^GSPC": "S&P500", "^DJI": "다우", "^IXIC": "나스닥", "^NDX": "나스닥100",
-    "^SOX": "필라델피아반도체", "^VIX": "VIX",
-    "^IRX": "미국채 13주", "^FVX": "미국채 5년", "^TNX": "미국채 10년", "^TYX": "미국채 30년",
-    "DX-Y.NYB": "달러인덱스", "KRW=X": "달러/원", "JPY=X": "달러/엔",
-    "CL=F": "WTI", "BZ=F": "브렌트", "GC=F": "금", "SI=F": "은",
-    "HG=F": "구리", "NG=F": "천연가스", "BTC-USD": "비트코인",
-    "^KS11": "코스피", "^KQ11": "코스닥", "^N225": "니케이", "000001.SS": "상해종합",
-}
 
 # 하루 2회차. (어느 날, 시, 분) — prev = 어제
 SESSION_WINDOW = {
@@ -105,8 +90,37 @@ def get(url, **kw):
 
 # ─────────────────────────── 텔레그램 ───────────────────────────
 
+PHOTO_RE = re.compile(r"background-image\s*:\s*url\(\s*['\"]?(https://[^'\")]+)['\"]?\s*\)", re.I)
+
+
+def _photos(box):
+    """게시물 박스에서 사진 URL을 뽑는다. 섹터 맵은 사진으로 올라온다."""
+    urls = []
+    for el in box.select("a.tgme_widget_message_photo_wrap, i.tgme_widget_message_photo,"
+                         " .tgme_widget_message_photo_wrap, [style*='background-image']"):
+        m = PHOTO_RE.search(el.get("style") or "")
+        if m and m.group(1) not in urls:
+            urls.append(m.group(1))
+    for img in box.select("img.tgme_widget_message_photo, picture img, img[src^='https://']"):
+        src = img.get("src")
+        if src and "emoji" not in src and src not in urls:
+            urls.append(src)
+    # 링크 프리뷰 썸네일은 섹터 맵이 아니므로 제외
+    prev = box.select_one("a.tgme_widget_message_link_preview")
+    if prev:
+        drop = set()
+        for el in prev.select("[style*='background-image'], img[src^='https://']"):
+            m = PHOTO_RE.search(el.get("style") or "")
+            if m:
+                drop.add(m.group(1))
+            if el.get("src"):
+                drop.add(el["src"])
+        urls = [u for u in urls if u not in drop]
+    return urls
+
+
 def parse_telegram(html: str):
-    """t.me/s/<ch> HTML → [{id, dt, text}] (오래된 순)"""
+    """t.me/s/<ch> HTML → [{id, dt, text, photos}] (오래된 순)"""
     soup = BeautifulSoup(html, "lxml")
     out = []
     for box in soup.select("div.tgme_widget_message"):
@@ -129,10 +143,33 @@ def parse_telegram(html: str):
         raw_id = box.get("data-post", "")
         mid = int(raw_id.split("/")[-1]) if "/" in raw_id and raw_id.split("/")[-1].isdigit() else None
         text = clean(text)
-        if text:
-            out.append({"id": mid, "dt": dt, "text": text})
+        photos = _photos(box)
+        # 사진만 있고 본문이 없는 게시물도 버리지 않는다 — 섹터 맵이 그런 형태다
+        if text or photos:
+            out.append({"id": mid, "dt": dt, "text": text, "photos": photos})
     out.sort(key=lambda p: p["dt"])
     return out
+
+
+def download_images(posts, outdir: Path, channel: str, limit: int = 6):
+    """구간 내 게시물의 사진을 내려받아 파일로 저장. [(파일명, 게시물시각, 캡션)] 반환."""
+    outdir.mkdir(parents=True, exist_ok=True)
+    saved, n = [], 0
+    for p in posts:
+        for i, url in enumerate(p.get("photos") or []):
+            if n >= limit:
+                return saved
+            name = f"{channel}_{p['dt']:%Y%m%d_%H%M}_{p['id'] or 0}_{i}.jpg"
+            try:
+                r = get(url, timeout=40)
+                if r.status_code != 200 or len(r.content) < 5000:
+                    continue
+                (outdir / name).write_bytes(r.content)
+                saved.append((name, p["dt"], (p.get("text") or "")[:120]))
+                n += 1
+            except Exception:
+                continue
+    return saved
 
 
 def fetch_telegram(channel: str, since: datetime, max_pages: int = 6):
@@ -197,29 +234,15 @@ def fetch_transcript(video_id: str):
 
 # ─────────────────────────── 시세 ───────────────────────────
 
-def fetch_quotes(symbols):
-    import yfinance as yf
-    rows = {}
-    data = yf.download(list(symbols), period="5d", interval="1d",
-                       progress=False, auto_adjust=False, group_by="ticker")
-    for sym in symbols:
-        try:
-            df = data[sym].dropna() if len(symbols) > 1 else data.dropna()
-            if len(df) < 2:
-                continue
-            last, prev = df["Close"].iloc[-1], df["Close"].iloc[-2]
-            rows[sym] = {"close": round(float(last), 4),
-                         "chg_pct": round(float((last - prev) / prev * 100), 2)}
-        except Exception:
-            continue
-    return rows
 
 
 # ─────────────────────────── 번들 ───────────────────────────
 
-def build(session, out_path, want_transcript=True, want_quotes=False):
+def build(session, out_path, want_transcript=True, img_dir=None):
     base, ext, now = window(session)
     checks, lines = [], []
+    img_dir = Path(img_dir) if img_dir else Path(out_path).parent / "images"
+    images = []
 
     lines.append(f"# 브리핑 수집 번들 — {session}시 회차")
     lines.append(f"생성: {now:%Y-%m-%d %H:%M} KST")
@@ -234,6 +257,11 @@ def build(session, out_path, want_transcript=True, want_quotes=False):
             inw = [p for p in posts if p["dt"] >= base]
             inext = [p for p in posts if ext <= p["dt"] < base]
             status = "ok" if parsed else "PARSE_FAIL"
+            # 섹터 맵은 insidertracking에 사진으로 올라온다 → 파일로 내려받아 둔다
+            if ch == "insidertracking":
+                images = download_images(inw + inext, img_dir, ch)
+                checks.append({"source": "images/insidertracking", "status": "ok" if images else "NO_IMAGE",
+                               "saved": len(images)})
             checks.append({"source": f"tg/{ch}", "status": status,
                            "in_window": len(inw), "in_lookback": len(inext), "parsed": parsed})
             lines.append(f"\n### {ch} — {desc}")
@@ -248,6 +276,17 @@ def build(session, out_path, want_transcript=True, want_quotes=False):
         except Exception as e:
             checks.append({"source": f"tg/{ch}", "status": "ERROR", "detail": str(e)[:120]})
             lines.append(f"\n### {ch} — 수집 실패: {type(e).__name__} {str(e)[:120]}\n")
+
+    # 섹터 맵 이미지
+    lines.append("\n\n## S&P500 섹터 맵 이미지\n")
+    if images:
+        lines.append(f"{img_dir.name}/ 에 {len(images)}장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다. "
+                     "이미지를 직접 열어 보고, 거기 보이는 것만으로 섹터 흐름을 서술하라.\n")
+        for name, dt, cap in images:
+            lines.append(f"- `{img_dir.name}/{name}` — {dt:%m-%d %H:%M} KST"
+                         + (f" / 캡션: {cap}" if cap else " / 캡션 없음"))
+    else:
+        lines.append("맵 미게시 — 구간 내 insidertracking 사진 없음. 다른 경로로 대체하지 마라.\n")
 
     # 유튜브
     lines.append("\n\n## 유튜브\n")
@@ -277,37 +316,10 @@ def build(session, out_path, want_transcript=True, want_quotes=False):
             checks.append({"source": f"yt/{desc[:20]}", "status": "ERROR", "detail": str(e)[:120]})
             lines.append(f"\n### {desc} — 수집 실패: {type(e).__name__}\n")
 
-    # 시세 — 기본 OFF. 브리핑은 텔레그램·유튜브에 실제로 적힌 숫자만 쓴다.
+    # 시세는 수집하지 않는다. 지표는 텔레그램·유튜브 본문에 적힌 값만 쓴다.
     lines.append("\n\n## 시세\n")
-    if not want_quotes:
-        lines.append("시세 수집은 꺼져 있다(--quotes 로 켤 수 있음). "
-                     "지표·등락률은 텔레그램·유튜브 본문에 적힌 값만 쓰고, "
-                     "없는 항목은 '소스 미제공'으로 남겨라. 추정 금지.\n")
-    else:
-        try:
-            macro = fetch_quotes(list(MACRO.keys()))
-            watch = fetch_quotes(WATCHLIST)
-            checks.append({"source": "quotes", "status": "ok" if macro else "EMPTY",
-                           "macro": len(macro), "watchlist": len(watch)})
-            lines.append("\n### 지수·금리·환율·원자재\n")
-            lines.append("| 지표 | 종가 | 변동 |")
-            lines.append("|---|---|---|")
-            for sym, name in MACRO.items():
-                q = macro.get(sym)
-                if q:
-                    lines.append(f"| {name} | {q['close']:,} | {q['chg_pct']:+.2f}% |")
-            lines.append("\n### 관심종목\n")
-            lines.append("| 종목 | 종가 | 변동 |")
-            lines.append("|---|---|---|")
-            for sym in WATCHLIST:
-                q = watch.get(sym)
-                if q:
-                    lines.append(f"| {sym} | {q['close']:,} | {q['chg_pct']:+.2f}% |")
-            lines.append("\n※ 삼성전자·SK하이닉스는 005930.KS / 000660.KS 로 조회 가능하나 "
-                         "국내 장 마감 기준이라 미국 흐름과 시점이 어긋난다. 별도 확인 필요.\n")
-        except Exception as e:
-            checks.append({"source": "quotes", "status": "ERROR", "detail": str(e)[:120]})
-            lines.append(f"\n시세 수집 실패: {type(e).__name__} {str(e)[:120]}\n")
+    lines.append("시세는 수집하지 않는다. 지표·등락률은 텔레그램·유튜브 본문에 적힌 값만 쓰고, "
+                 "없는 항목은 '소스 미제공'으로 남겨라. 추정 금지.\n")
 
     # 수집 점검
     lines.append("\n\n## 수집 점검\n")
@@ -340,9 +352,9 @@ if __name__ == "__main__":
     ap.add_argument("--session", required=True, choices=["0530", "22"])
     ap.add_argument("--out", default=None)
     ap.add_argument("--no-transcript", action="store_true")
-    ap.add_argument("--quotes", action="store_true",
-                    help="yfinance 시세도 함께 수집(기본 off — 브리핑은 소스에 적힌 숫자만 쓴다)")
+    ap.add_argument("--images", default=None,
+                    help="섹터 맵 이미지를 저장할 디렉터리(기본: 번들 파일 옆 images/)")
     a = ap.parse_args()
     out = a.out or f"bundle_{datetime.now(KST):%Y%m%d}_{a.session}.md"
     sys.exit(build(a.session, out, want_transcript=not a.no_transcript,
-                   want_quotes=a.quotes))
+                   img_dir=a.images))
