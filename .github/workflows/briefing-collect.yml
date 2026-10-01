@@ -1,0 +1,73 @@
+name: briefing-collect
+
+on:
+  schedule:
+    - cron: "0 20 * * *"
+    - cron: "20 12 * * *"
+    - cron: "0 21 * * *"
+    - cron: "20 13 * * *"
+  workflow_dispatch:
+    inputs:
+      session:
+        description: "회차 (0530 / 22)"
+        required: true
+        default: "22"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: briefing-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: deps
+        run: pip install requests beautifulsoup4 lxml youtube-transcript-api
+
+      - name: session
+        id: s
+        run: |
+          if [ -n "${{ github.event.inputs.session }}" ]; then
+            echo "session=${{ github.event.inputs.session }}" >> $GITHUB_OUTPUT
+          else
+            case "$(date -u +%H)" in
+              20|21) echo "session=0530" >> $GITHUB_OUTPUT ;;
+              12|13) echo "session=22"   >> $GITHUB_OUTPUT ;;
+              *)     echo "session=22"   >> $GITHUB_OUTPUT ;;
+            esac
+          fi
+          echo "date=$(TZ=Asia/Seoul date +%Y%m%d)" >> $GITHUB_OUTPUT
+
+      - name: collect
+        continue-on-error: true
+        run: |
+          mkdir -p bundles/images
+          rm -f bundles/images/*
+          python collect.py \
+            --session "${{ steps.s.outputs.session }}" \
+            --out "bundles/${{ steps.s.outputs.date }}_${{ steps.s.outputs.session }}.md" \
+            --images bundles/images
+          cp "bundles/${{ steps.s.outputs.date }}_${{ steps.s.outputs.session }}.md" bundles/latest.md
+          ls -la bundles bundles/images
+
+      - name: prune
+        run: find bundles -name "2*_*.md" -mtime +30 -delete || true
+
+      - name: commit
+        run: |
+          git config user.name  "briefing-bot"
+          git config user.email "briefing-bot@users.noreply.github.com"
+          git add -A bundles
+          git diff --staged --quiet || git commit -m "collect ${{ steps.s.outputs.date }} ${{ steps.s.outputs.session }}"
+          git pull --rebase --autostash || true
+          git push
