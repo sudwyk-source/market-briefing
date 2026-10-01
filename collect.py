@@ -15,6 +15,7 @@
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
@@ -247,6 +248,79 @@ def fetch_transcript(video_id: str):
 
 # ─────────────────────────── 시세 ───────────────────────────
 
+# 11개 SPDR 섹터 ETF — finviz 맵이 보여주는 섹터 흐름을 숫자로 대체한다
+SECTORS = [
+    ("XLK",  "기술"),        ("XLC",  "커뮤니케이션"), ("XLY",  "경기소비재"),
+    ("XLP",  "필수소비재"),  ("XLE",  "에너지"),       ("XLF",  "금융"),
+    ("XLV",  "헬스케어"),    ("XLI",  "산업재"),       ("XLB",  "소재"),
+    ("XLRE", "부동산"),      ("XLU",  "유틸리티"),
+    ("SPY",  "S&P500"),      ("QQQ",  "나스닥100"),    ("SMH",  "반도체"),
+]
+
+# 관심종목. 저장소에 남기고 싶지 않으면 Actions Secret WATCHLIST에
+# "NVDA,AVGO,..." 형태로 넣으면 그 값이 우선한다.
+DEFAULT_WATCHLIST = ["NVDA", "AVGO", "ARM", "MRVL", "TSM", "MU", "SNDK",
+                     "GOOG", "AMZN", "ORCL", "TSLA", "LITE", "AAOI",
+                     "ETN", "BE", "GEV", "SOXX", "SPYM", "QQQM", "AIPO"]
+
+
+def watchlist():
+    env = os.environ.get("WATCHLIST", "").strip()
+    return [t.strip().upper() for t in env.split(",") if t.strip()] or DEFAULT_WATCHLIST
+
+
+def quote_yahoo(sym):
+    """(종가, 등락%) — 야후 차트 API. 실패하면 None."""
+    url = ("https://query1.finance.yahoo.com/v8/finance/chart/"
+           f"{sym}?range=5d&interval=1d")
+    r = get(url, timeout=20)
+    if r.status_code != 200:
+        raise RuntimeError(f"HTTP {r.status_code}")
+    meta = r.json()["chart"]["result"][0]["meta"]
+    last = meta.get("regularMarketPrice")
+    prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+    if last is None or not prev:
+        raise RuntimeError("no price in meta")
+    return round(float(last), 4), round((float(last) - float(prev)) / float(prev) * 100, 2)
+
+
+def quote_stooq(sym):
+    """야후가 막혔을 때의 대체 경로. 미국 주식은 <티커>.us."""
+    s = sym.lower().replace("^", "").replace("-", ".")
+    r = get(f"https://stooq.com/q/d/l/?s={s}.us&i=d", timeout=20)
+    rows = [l for l in r.text.strip().split("\n") if l and l[0].isdigit()]
+    if len(rows) < 2:
+        raise RuntimeError("stooq empty")
+    close = lambda row: float(row.split(",")[4])
+    last, prev = close(rows[-1]), close(rows[-2])
+    return round(last, 4), round((last - prev) / prev * 100, 2)
+
+
+def fetch_quotes(symbols):
+    """{sym: (종가, 등락%)} — 야후 먼저, 실패하면 stooq."""
+    out, fails = {}, []
+    for sym in symbols:
+        for fn in (quote_yahoo, quote_stooq):
+            try:
+                out[sym] = fn(sym)
+                break
+            except Exception:
+                continue
+        else:
+            fails.append(sym)
+        time.sleep(0.15)
+    return out, fails
+
+
+def fetch_finviz_map():
+    """finviz 맵의 원본 데이터(되면). 그림이 아니라 종목별 등락률 JSON."""
+    r = get("https://finviz.com/api/map_perf.ashx?t=sec_all", timeout=25)
+    if r.status_code != 200:
+        raise RuntimeError(f"HTTP {r.status_code}")
+    d = r.json()
+    if not isinstance(d, dict) or not d:
+        raise RuntimeError("unexpected shape")
+    return d
 
 
 # ─────────────────────────── 번들 ───────────────────────────
@@ -329,10 +403,62 @@ def build(session, out_path, want_transcript=True, img_dir=None):
             checks.append({"source": f"yt/{desc[:20]}", "status": "ERROR", "detail": str(e)[:120]})
             lines.append(f"\n### {desc} — 수집 실패: {type(e).__name__}\n")
 
-    # 시세는 수집하지 않는다. 지표는 텔레그램·유튜브 본문에 적힌 값만 쓴다.
-    lines.append("\n\n## 시세\n")
-    lines.append("시세는 수집하지 않는다. 지표·등락률은 텔레그램·유튜브 본문에 적힌 값만 쓰고, "
-                 "없는 항목은 '소스 미제공'으로 남겨라. 추정 금지.\n")
+    # 섹터·관심종목 시세 — finviz 맵을 숫자로 대체한다
+    lines.append("\n\n## 섹터 흐름 (ETF 등락률)\n")
+    try:
+        sec_q, sec_fail = fetch_quotes([s for s, _ in SECTORS])
+        ranked = sorted(((n, s, sec_q[s]) for s, n in SECTORS if s in sec_q),
+                        key=lambda r: r[2][1], reverse=True)
+        checks.append({"source": "quotes/sectors", "status": "ok" if ranked else "EMPTY",
+                       "got": len(ranked), "failed": len(sec_fail)})
+        if ranked:
+            lines.append("| 섹터 | 티커 | 종가 | 등락 |")
+            lines.append("|---|---|---|---|")
+            for name, sym, (c, pct) in ranked:
+                lines.append(f"| {name} | {sym} | {c:,} | {pct:+.2f}% |")
+            top = ranked[0]
+            bot = ranked[-1]
+            lines.append(f"\n가장 강한 섹터: {top[0]} {top[2][1]:+.2f}% / "
+                         f"가장 약한 섹터: {bot[0]} {bot[2][1]:+.2f}%")
+        if sec_fail:
+            lines.append(f"\n조회 실패: {', '.join(sec_fail)}")
+    except Exception as e:
+        checks.append({"source": "quotes/sectors", "status": "ERROR", "detail": str(e)[:120]})
+        lines.append(f"섹터 시세 수집 실패: {type(e).__name__} {str(e)[:120]}\n")
+
+    lines.append("\n\n## 관심종목 등락률\n")
+    try:
+        wl = watchlist()
+        w_q, w_fail = fetch_quotes(wl)
+        checks.append({"source": "quotes/watchlist", "status": "ok" if w_q else "EMPTY",
+                       "got": len(w_q), "failed": len(w_fail)})
+        if w_q:
+            lines.append("| 종목 | 종가 | 등락 |")
+            lines.append("|---|---|---|")
+            for sym in wl:
+                if sym in w_q:
+                    c, pct = w_q[sym]
+                    lines.append(f"| {sym} | {c:,} | {pct:+.2f}% |")
+        if w_fail:
+            lines.append(f"\n조회 실패(등락 미확인으로 처리할 것): {', '.join(w_fail)}")
+    except Exception as e:
+        checks.append({"source": "quotes/watchlist", "status": "ERROR", "detail": str(e)[:120]})
+        lines.append(f"관심종목 시세 수집 실패: {type(e).__name__} {str(e)[:120]}\n")
+
+    # finviz 맵 원본 데이터 — 되면 얹고, 막히면 그렇게 적는다
+    lines.append("\n\n## finviz 맵 데이터\n")
+    try:
+        fv = fetch_finviz_map()
+        checks.append({"source": "finviz/map", "status": "ok", "entries": len(fv)})
+        items = [(k, v) for k, v in fv.items() if isinstance(v, (int, float))]
+        items.sort(key=lambda kv: kv[1], reverse=True)
+        lines.append(f"종목 {len(items)}개의 등락률을 받았다(그림이 아니라 수치).\n")
+        lines.append("상승 상위 15: " + ", ".join(f"{k} {v:+.2f}%" for k, v in items[:15]))
+        lines.append("\n하락 상위 15: " + ", ".join(f"{k} {v:+.2f}%" for k, v in items[-15:]))
+    except Exception as e:
+        checks.append({"source": "finviz/map", "status": "BLOCKED", "detail": str(e)[:80]})
+        lines.append(f"finviz 접근 불가 ({type(e).__name__}). "
+                     "위의 섹터 ETF 표로 섹터 흐름을 읽어라. 맵을 봤다고 쓰지 마라.\n")
 
     # 수집 점검
     lines.append("\n\n## 수집 점검\n")
