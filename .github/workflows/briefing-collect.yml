@@ -1,11 +1,19 @@
 name: briefing-collect
 
+# 하루 2회 수집해 bundles/ 에 커밋한다.
+# 브리핑 예약 작업은 raw.githubusercontent.com 의 bundles/latest.md 와
+# bundles/images/ 만 읽으면 되므로 PC 브라우저가 필요 없어진다.
+
 on:
   schedule:
-    - cron: "0 20 * * *"
-    - cron: "20 12 * * *"
-    - cron: "0 21 * * *"
-    - cron: "20 13 * * *"
+    # cron은 UTC. KST = UTC+9. 브리핑보다 20~30분 앞서 돈다.
+    # KST = UTC+9. 인사이더는 미장 마감 직후 05:00~05:30에 하루치 핵심을 몰아 올린다.
+    # 마감 시각이 아니라 그 배치가 끝난 뒤에 수집해야 한다.
+    - cron: "40 20 * * *"   # 05:40 KST — 서머타임 마감(05:00) 배치 이후
+    - cron: "20 12 * * *"  # 21:20 KST → 22 회차   (브리핑 21:49)
+    # 겨울시간(11월~3월)에는 브리핑이 06:28 / 22:49로 밀린다. 아래 두 줄도 함께 돈다.
+    - cron: "40 21 * * *"   # 06:40 KST — 겨울시간 마감(06:00) 배치 이후
+    - cron: "20 13 * * *"  # 22:20 KST
   workflow_dispatch:
     inputs:
       session:
@@ -16,37 +24,64 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: briefing-collect
+  cancel-in-progress: false
+
 jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: deps
-        run: pip install requests beautifulsoup4 lxml youtube-transcript-api
+        run: pip install requests beautifulsoup4 lxml youtube-transcript-api yt-dlp
 
-      - name: collect
-        env:
-          S: ${{ github.event.inputs.session || '22' }}
+      - name: 회차 결정
+        id: s
         run: |
-          D=$(TZ=Asia/Seoul date +%Y%m%d)
-          rm -rf bundles/images
+          if [ -n "${{ github.event.inputs.session }}" ]; then
+            echo "session=${{ github.event.inputs.session }}" >> $GITHUB_OUTPUT
+          else
+            case "$(date -u +%H)" in
+              20|21) echo "session=0530" >> $GITHUB_OUTPUT ;;
+              12|13) echo "session=22"   >> $GITHUB_OUTPUT ;;
+              *)     echo "session=22"   >> $GITHUB_OUTPUT ;;
+            esac
+          fi
+          echo "date=$(TZ=Asia/Seoul date +%Y%m%d)" >> $GITHUB_OUTPUT
+
+      - name: 수집
+        continue-on-error: true      # 일부 소스 실패해도 번들은 남긴다
+        env:
+          # 저장소 Settings → Secrets and variables → Actions 에 넣는다.
+          # 비어 있으면 Gemini 경로를 아예 타지 않고 제목·설명란만으로 간다.
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MAX_VIDEOS: "12"
+        run: |
           mkdir -p bundles/images
-          echo "=== session=$S date=$D"
-          python collect.py --session "$S" --out "bundles/${D}_${S}.md"
-          echo "=== exit=$?"
-          cp "bundles/${D}_${S}.md" bundles/latest.md
+          rm -f bundles/images/*       # 회차마다 새로 받는다
+          python collect.py \
+            --session "${{ steps.s.outputs.session }}" \
+            --out "bundles/${{ steps.s.outputs.date }}_${{ steps.s.outputs.session }}.md" \
+            --images bundles/images
+          cp "bundles/${{ steps.s.outputs.date }}_${{ steps.s.outputs.session }}.md" bundles/latest.md
+          echo "${{ steps.s.outputs.date }} ${{ steps.s.outputs.session }}" > bundles/latest.txt
           ls -la bundles bundles/images
 
-      - name: commit
-        if: always()
+      - name: 오래된 번들 정리 (30일)
+        run: find bundles -name "2*_*.md" -mtime +30 -delete || true
+
+      - name: 커밋
         run: |
-          git config user.name briefing-bot
-          git config user.email briefing-bot@users.noreply.github.com
-          git add -A bundles || true
-          git diff --staged --quiet || git commit -m "collect"
-          git push || true
+          git config user.name  "briefing-bot"
+          git config user.email "briefing-bot@users.noreply.github.com"
+          git add -A bundles
+          git diff --staged --quiet || git commit -m "collect ${{ steps.s.outputs.date }} ${{ steps.s.outputs.session }}"
+          git pull --rebase --autostash || true
+          git push
