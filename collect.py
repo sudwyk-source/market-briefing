@@ -335,6 +335,26 @@ def _yt_list_ytdlp(cid: str, limit: int = 12):
 
 YT_PROBE = []   # 어느 후보가 무엇을 돌려줬는지 (첫 채널에서만 기록)
 
+TR_GIVEUP = 5          # 연속 이만큼 자막이 막히면 이번 회차는 포기한다
+FIRST_RUN_NEW = 3      # 기준점이 없는 첫 실행에서 채널당 다룰 최신 편수
+YT_SEEN_PATH = Path("bundles/yt_seen.json")
+
+
+def load_yt_seen():
+    """채널별로 '이미 본 영상 id'. 업로드 시각을 못 받는 경로에서 신규를 가르는 기준."""
+    try:
+        return json.loads(YT_SEEN_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def save_yt_seen(d):
+    try:
+        YT_SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+        YT_SEEN_PATH.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception:
+        pass
+
 
 def fetch_youtube_list(channel_id: str):
     xml, why = None, []
@@ -674,6 +694,8 @@ def build(session, out_path, want_transcript=True, img_dir=None):
     tr_ok, tr_fail = [], []
     desc_got = desc_empty = 0      # 설명란이 실제로 얼마나 들어오는지 — 자막 대체재의 실측치
     gem_used = 0                   # Gemini로 돌린 편수 (무료 한도 보호)
+    tr_miss = 0                    # 연속 자막 실패 횟수
+    tr_dead = False                # 차단이 확인되면 이번 회차는 자막 시도를 접는다
 
     lines.append(f"# 브리핑 수집 번들 — {session}시 회차")
     lines.append(f"생성: {now:%Y-%m-%d %H:%M} KST")
@@ -733,21 +755,36 @@ def build(session, out_path, want_transcript=True, img_dir=None):
 
     # 유튜브
     lines.append("\n\n## 유튜브\n")
+    yt_seen = load_yt_seen()
+    first_run = not yt_seen
     for cid, desc in YOUTUBE:
         try:
             vids = fetch_youtube_list(cid)
-            inw = [v for v in vids if v["dt"] >= ext]
+            known = set(yt_seen.get(cid) or [])
+            # yt-dlp 경로는 업로드 시각을 안 준다. 그때는 시간 구간 대신
+            # '지난 수집 때 못 보던 영상인가'로 신규를 가른다. members.py 와 같은 방식이다.
+            by_time = not any(v.get("dt_approx") for v in vids)
+            if by_time:
+                inw = [v for v in vids if v["dt"] >= ext]
+                mode = "시각기준"
+            elif first_run:
+                inw = vids[:FIRST_RUN_NEW]      # 기준점이 없는 첫 실행 — 최신 몇 편만
+                mode = "첫실행(기준점 생성)"
+            else:
+                inw = [v for v in vids if v["id"] not in known]
+                mode = "신규기준(시각 불명)"
+            yt_seen[cid] = sorted(known | {v["id"] for v in vids})[-300:]
             checks.append({"source": f"yt/{desc[:20]}", "status": "ok" if vids else "EMPTY_FEED",
-                           "in_window": len([v for v in vids if v["dt"] >= base]),
-                           "in_lookback": len([v for v in vids if ext <= v["dt"] < base])})
+                           "방식": mode, "목록": len(vids), "다룸": len(inw)})
             lines.append(f"\n### {desc}")
             if not inw:
-                lines.append("구간 내 신규 없음\n")
+                lines.append("지난 수집 이후 신규 없음\n")
                 continue
             for v in inw:
-                tag = "" if v["dt"] >= base else "  [확장 구간]"
-                if v.get("dt_approx"):
-                    tag += "  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함"
+                if by_time:
+                    tag = "" if v["dt"] >= base else "  [확장 구간]"
+                else:
+                    tag = "  [지난 수집 이후 신규 — 업로드 시각 불명]"
                 lines.append(f"\n**{v['title']}** — {v['dt']:%m-%d %H:%M}{tag}")
                 lines.append(f"https://www.youtube.com/watch?v={v['id']}")
                 # 설명란은 RSS로 공짜로 들어온다. 자막이 막혀도 이건 남는다.
@@ -757,7 +794,7 @@ def build(session, out_path, want_transcript=True, img_dir=None):
                     desc_got += 1
                 else:
                     desc_empty += 1
-                if want_transcript:
+                if want_transcript and not tr_dead:
                     # 무료 등급은 하루 유튜브 8시간이다. 편수를 막아 한도를 보호한다.
                     use_gem = gem_used < GEMINI_MAX
                     try:
@@ -772,15 +809,31 @@ def build(session, out_path, want_transcript=True, img_dir=None):
                                 f"수치는 원문 확인 전까지 '영상 언급치'로만 쓸 것:\n{txt}\n")
                         else:
                             lines.append(f"\n자막 ({len(txt):,}자, {via}):\n{txt}\n")
+                        tr_miss = 0
                     except Exception as e:
                         tr_fail.append(str(e)[:140])
-                        lines.append("\n자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.\n")
+                        tr_miss += 1
+                        # 연속으로 막히면 그만둔다. 108편을 두 가지 방법으로 두드리면
+                        # 느릴 뿐 아니라 유튜브가 보기에 딱 봇이다.
+                        if tr_miss >= TR_GIVEUP:
+                            tr_dead = True
+                            lines.append(f"\n자막 확인 불가 — {TR_GIVEUP}편 연속 차단이라 "
+                                         f"이번 회차는 여기서 자막 시도를 멈춘다.\n")
+                        else:
+                            lines.append("\n자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.\n")
+                elif want_transcript:
+                    lines.append("\n자막 시도 생략(이번 회차 차단 확인됨). 제목만. "
+                                 "내용 해설을 쓰지 말 것.\n")
         except Exception as e:
             checks.append({"source": f"yt/{desc[:20]}", "status": "ERROR", "detail": str(e)[:120]})
             lines.append(f"\n### {desc} — 수집 실패: {type(e).__name__}\n")
 
+    save_yt_seen(yt_seen)
     checks.append({"source": "youtube/피드주소", "status": "ok" if (YT_PROBE and YT_PROBE[0].get("성공한후보")) else "ALL_FAILED",
                    **(YT_PROBE[0] if YT_PROBE else {"note": "채널을 하나도 시도하지 않음"})})
+    if tr_dead:
+        checks.append({"source": "youtube/자막중단", "status": "GAVE_UP",
+                       "사유": f"{TR_GIVEUP}편 연속 차단 — 남은 영상은 자막을 시도하지 않음"})
 
     checks.append({"source": "youtube/설명란",
                    "status": "ok" if desc_got else ("NO_DESC" if desc_empty else "NO_VIDEO"),
