@@ -273,22 +273,64 @@ def fetch_telegram(channel: str, since: datetime, max_pages: int = 6):
 
 # ─────────────────────────── 유튜브 ───────────────────────────
 
+def _uploads_playlist(cid: str, longform_only=True):
+    """채널 id → 업로드 재생목록 id.  UC... → UULF...(쇼츠 제외) / UU...(전체)"""
+    if not cid.startswith("UC"):
+        return cid
+    return ("UULF" if longform_only else "UU") + cid[2:]
+
+
 def _yt_feed_candidates(cid: str):
     """RSS 피드 주소 후보들. 한 가지만 믿지 않는다.
 
-    10-02 실행에서 9개 채널이 전부 HTTP 404로 떨어졌다. 그 전날에는 같은 주소가
-    되던 것이라, 주소가 바뀐 것인지 깃허브 IP가 막힌 것인지 알 수 없었다.
-    그래서 후보를 돌려보고 '무엇이 무엇을 돌려줬는지'를 번들에 남긴다.
+    10-02 실행에서 channel_id 형태 5개가 전부 HTTP 404로 떨어졌다. 유튜브가
+    RSS를 사실상 버리는 중이라 channel_id 쪽이 먼저 죽은 것으로 보인다.
+    업로드 재생목록(playlist_id)은 따로 살아 있는 경우가 있어 먼저 시도한다.
     """
+    uulf, uu = _uploads_playlist(cid), _uploads_playlist(cid, False)
     return [
+        ("재생목록UULF", f"https://www.youtube.com/feeds/videos.xml?playlist_id={uulf}", None),
+        ("재생목록UU", f"https://www.youtube.com/feeds/videos.xml?playlist_id={uu}", None),
         ("기본", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}", None),
         ("지역지정", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}&hl=ko&gl=KR", None),
-        ("www없음", f"https://youtube.com/feeds/videos.xml?channel_id={cid}", None),
-        ("UA없음", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}",
-         {"User-Agent": "", "Accept": "application/atom+xml,application/xml;q=0.9"}),
         ("피드전용UA", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}",
          {"User-Agent": "feedparser/6.0", "Accept": "*/*"}),
     ]
+
+
+def _yt_list_ytdlp(cid: str, limit: int = 12):
+    """RSS가 전부 죽었을 때의 대체 경로.
+
+    yt-dlp는 유튜브가 바뀔 때마다 따라가며 고쳐지는 도구라, RSS보다 오래 간다.
+    업로드 재생목록을 평면으로 읽는다. 영상 페이지를 열지 않아 요청이 가볍다.
+    """
+    import subprocess
+    url = f"https://www.youtube.com/playlist?list={_uploads_playlist(cid)}"
+    r = subprocess.run(
+        ["yt-dlp", "--flat-playlist", "-J", "--playlist-end", str(limit),
+         "--extractor-args", "youtube:player_client=web_safari", url],
+        capture_output=True, text=True, timeout=180, encoding="utf-8", errors="replace")
+    if r.returncode != 0 or not r.stdout.strip():
+        raise RuntimeError((r.stderr or "빈 응답").strip().split("\n")[-1][:160])
+    data = json.loads(r.stdout)
+    out = []
+    for e in (data.get("entries") or []):
+        if not e or not e.get("id"):
+            continue
+        ts = e.get("timestamp")
+        out.append({
+            "id": e["id"],
+            "title": e.get("title") or "(제목 없음)",
+            "desc": clean(e.get("description") or ""),
+            "dt": (datetime.fromtimestamp(ts, tz=timezone.utc).astimezone(KST)
+                   if ts else datetime.now(KST)),
+            # 시각을 못 받은 건 '모른다'고 적어 둔다. 구간 밖이라 버리는 일은 없게
+            # 지금 시각을 넣되, 번들과 점검에 불명이라고 표시한다.
+            "dt_approx": not ts,
+        })
+    if not out:
+        raise RuntimeError("재생목록이 비어 있음")
+    return out
 
 
 YT_PROBE = []   # 어느 후보가 무엇을 돌려줬는지 (첫 채널에서만 기록)
@@ -309,9 +351,17 @@ def fetch_youtube_list(channel_id: str):
         except Exception as e:
             why.append(f"{name}: {type(e).__name__} {str(e)[:40]}")
     if xml is None:
-        if not YT_PROBE:
-            YT_PROBE.append({"성공한후보": None, "시도": why})
-        raise RuntimeError(" / ".join(why))
+        # RSS가 전부 죽었다 → yt-dlp로 간다. 여기서도 실패해야 진짜 실패다.
+        try:
+            vids = _yt_list_ytdlp(channel_id)
+            if not YT_PROBE:
+                YT_PROBE.append({"성공한후보": "yt-dlp(RSS 전멸)", "RSS시도": why})
+            return vids
+        except Exception as e:
+            why.append(f"yt-dlp: {type(e).__name__} {str(e)[:70]}")
+            if not YT_PROBE:
+                YT_PROBE.append({"성공한후보": None, "시도": why})
+            raise RuntimeError(" / ".join(why))
 
     soup = BeautifulSoup(xml, "xml")
     vids = []
@@ -696,6 +746,8 @@ def build(session, out_path, want_transcript=True, img_dir=None):
                 continue
             for v in inw:
                 tag = "" if v["dt"] >= base else "  [확장 구간]"
+                if v.get("dt_approx"):
+                    tag += "  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함"
                 lines.append(f"\n**{v['title']}** — {v['dt']:%m-%d %H:%M}{tag}")
                 lines.append(f"https://www.youtube.com/watch?v={v['id']}")
                 # 설명란은 RSS로 공짜로 들어온다. 자막이 막혀도 이건 남는다.
