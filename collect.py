@@ -273,11 +273,47 @@ def fetch_telegram(channel: str, since: datetime, max_pages: int = 6):
 
 # ─────────────────────────── 유튜브 ───────────────────────────
 
+def _yt_feed_candidates(cid: str):
+    """RSS 피드 주소 후보들. 한 가지만 믿지 않는다.
+
+    10-02 실행에서 9개 채널이 전부 HTTP 404로 떨어졌다. 그 전날에는 같은 주소가
+    되던 것이라, 주소가 바뀐 것인지 깃허브 IP가 막힌 것인지 알 수 없었다.
+    그래서 후보를 돌려보고 '무엇이 무엇을 돌려줬는지'를 번들에 남긴다.
+    """
+    return [
+        ("기본", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}", None),
+        ("지역지정", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}&hl=ko&gl=KR", None),
+        ("www없음", f"https://youtube.com/feeds/videos.xml?channel_id={cid}", None),
+        ("UA없음", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}",
+         {"User-Agent": "", "Accept": "application/atom+xml,application/xml;q=0.9"}),
+        ("피드전용UA", f"https://www.youtube.com/feeds/videos.xml?channel_id={cid}",
+         {"User-Agent": "feedparser/6.0", "Accept": "*/*"}),
+    ]
+
+
+YT_PROBE = []   # 어느 후보가 무엇을 돌려줬는지 (첫 채널에서만 기록)
+
+
 def fetch_youtube_list(channel_id: str):
-    r = get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}")
-    if r.status_code != 200:
-        raise RuntimeError(f"HTTP {r.status_code}")
-    soup = BeautifulSoup(r.text, "xml")
+    xml, why = None, []
+    for name, url, hdr in _yt_feed_candidates(channel_id):
+        try:
+            r = get(url, headers=hdr) if hdr is not None else get(url)
+            if r.status_code == 200 and "<entry" in r.text:
+                if not YT_PROBE:
+                    YT_PROBE.append({"성공한후보": name, "url": url.split("?")[0]})
+                xml = r.text
+                break
+            why.append(f"{name}: HTTP {r.status_code}"
+                       + ("" if r.status_code != 200 else f", entry 없음 ({len(r.text)}자)"))
+        except Exception as e:
+            why.append(f"{name}: {type(e).__name__} {str(e)[:40]}")
+    if xml is None:
+        if not YT_PROBE:
+            YT_PROBE.append({"성공한후보": None, "시도": why})
+        raise RuntimeError(" / ".join(why))
+
+    soup = BeautifulSoup(xml, "xml")
     vids = []
     for e in soup.find_all("entry"):
         pub = e.find("published")
@@ -690,6 +726,9 @@ def build(session, out_path, want_transcript=True, img_dir=None):
         except Exception as e:
             checks.append({"source": f"yt/{desc[:20]}", "status": "ERROR", "detail": str(e)[:120]})
             lines.append(f"\n### {desc} — 수집 실패: {type(e).__name__}\n")
+
+    checks.append({"source": "youtube/피드주소", "status": "ok" if (YT_PROBE and YT_PROBE[0].get("성공한후보")) else "ALL_FAILED",
+                   **(YT_PROBE[0] if YT_PROBE else {"note": "채널을 하나도 시도하지 않음"})})
 
     checks.append({"source": "youtube/설명란",
                    "status": "ok" if desc_got else ("NO_DESC" if desc_empty else "NO_VIDEO"),
