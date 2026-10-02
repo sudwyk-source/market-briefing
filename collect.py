@@ -629,6 +629,75 @@ def fetch_quotes(symbols):
     return out, fails
 
 
+# ──────────────────── 경제지표 캘린더 (investing.com) ────────────────────
+# 21:30(겨울 22:30) 미국 지표의 실제/예상/직전을 1차 출처에서 직접 받는다.
+# 텔레그램 채널이 받아쓰기를 기다리지 않아도 되고, 채널이 빠뜨린 지표도 잡힌다.
+# 주소가 하나만 막혀도 멈추지 않게 후보를 여러 개 둔다(finviz에서 이 방식이 통했다).
+
+CAL_CANDIDATES = [
+    # 공식 임베드 위젯 — 퍼가라고 만든 것이라 가장 덜 막힌다. countries=5 = 미국
+    ("위젯(미국)", "https://sslecal2.investing.com/?columns=exc_flags,exc_currency,"
+     "exc_importance,exc_actual,exc_forecast,exc_previous&features=datepicker,timezone"
+     "&countries=5&calType=day&timeZone=88&lang=1", None),
+    ("위젯(한국어)", "https://sslecal2.investing.com/?columns=exc_flags,exc_currency,"
+     "exc_importance,exc_actual,exc_forecast,exc_previous&features=datepicker,timezone"
+     "&countries=5&calType=day&timeZone=88&lang=18", None),
+    ("kr 페이지", "https://kr.investing.com/economic-calendar/", None),
+    ("us 페이지", "https://www.investing.com/economic-calendar/", None),
+]
+
+CAL_MIN_ROWS = 3          # 이보다 적으면 파싱이 깨진 것으로 본다
+
+
+def _parse_calendar(html: str):
+    """investing 캘린더 표 → [{시각, 지표, 중요도, 실제, 예상, 직전}]
+
+    위젯과 본 페이지가 같은 표 구조(tr.js-event-item)를 쓴다. 한쪽이 바뀌어도
+    다른 후보가 받쳐준다.
+    """
+    soup = BeautifulSoup(html, "lxml")
+    rows = []
+    for tr in soup.select("tr.js-event-item, tr[event_attr_id]"):
+        def cell(sel):
+            e = tr.select_one(sel)
+            return clean(e.get_text(" ")) if e else ""
+        name = cell("td.event, td.left.event")
+        if not name:
+            continue
+        # 중요도는 황소 아이콘 개수
+        imp = len(tr.select("td.sentiment i.grayFullBullishIcon, "
+                            "td.sentiment i.redFullBullishIcon")) or None
+        rows.append({
+            "시각": cell("td.time, td.first.left.time"),
+            "지표": name,
+            "중요도": imp,
+            "실제": cell("td.act, td.bold.act"),
+            "예상": cell("td.fore"),
+            "직전": cell("td.prev"),
+        })
+    return rows
+
+
+def fetch_calendar():
+    """후보를 차례로 두드리고, 전부 실패하면 각 주소가 무엇을 돌려줬는지 올린다."""
+    why = []
+    for name, url, hdr in CAL_CANDIDATES:
+        try:
+            r = get(url, headers=hdr) if hdr else get(url, timeout=30)
+            if r.status_code != 200:
+                why.append(f"{name}: HTTP {r.status_code}")
+                continue
+            rows = _parse_calendar(r.text)
+            # 조용히 틀린 데이터가 통과하지 않게 — 행 수와 '값이 실제로 있는지'를 둘 다 본다.
+            withval = [x for x in rows if x["실제"] or x["예상"] or x["직전"]]
+            if len(rows) >= CAL_MIN_ROWS and withval:
+                return rows, name, url
+            why.append(f"{name}: 행 {len(rows)}개 / 값 있는 행 {len(withval)}개 — 기준 미달")
+        except Exception as e:
+            why.append(f"{name}: {type(e).__name__} {str(e)[:50]}")
+    raise RuntimeError(" ||| ".join(why))
+
+
 FINVIZ_CANDIDATES = [
     "https://finviz.com/api/map_perf.ashx?t=sec_all",
     "https://finviz.com/api/map_perf.ashx?t=sec",
@@ -923,6 +992,28 @@ def build(session, out_path, want_transcript=True, img_dir=None):
     except Exception as e:
         checks.append({"source": "quotes/watchlist", "status": "ERROR", "detail": str(e)[:120]})
         lines.append(f"관심종목 시세 수집 실패: {type(e).__name__} {str(e)[:120]}\n")
+
+    # 경제지표 캘린더 — 21:30(겨울 22:30) 지표의 실제/예상/직전을 1차 출처에서
+    lines.append("\n\n## 경제지표 캘린더 (investing.com)\n")
+    try:
+        cal, cal_via, cal_url = fetch_calendar()
+        got = [c for c in cal if c["실제"]]
+        checks.append({"source": "calendar/investing", "status": "ok", "경로": cal_via,
+                       "행": len(cal), "실제값있음": len(got)})
+        lines.append(f"오늘 미국 일정 {len(cal)}건 (발표 완료 {len(got)}건). 출처: {cal_via}\n")
+        lines.append("| 시각 | 지표 | 중요도 | 실제 | 예상 | 직전 |")
+        lines.append("|---|---|---|---|---|---|")
+        for c in cal:
+            star = "★" * (c["중요도"] or 0) if c["중요도"] else "—"
+            lines.append(f"| {c['시각'] or '—'} | {c['지표']} | {star} | "
+                         f"{c['실제'] or '—'} | {c['예상'] or '—'} | {c['직전'] or '—'} |")
+        lines.append("\n이 표가 지표의 1차 출처다. 텔레그램 본문의 숫자와 다르면 둘 다 쓰고 "
+                     "차이를 밝혀라. '실제'가 비어 있으면 아직 발표 전이다 — "
+                     "'발표됐는데 수치 없음'으로 쓰지 마라.\n")
+    except Exception as e:
+        checks.append({"source": "calendar/investing", "status": "BLOCKED", "detail": str(e)[:400]})
+        lines.append("캘린더 접근 불가. 지표 수치는 텔레그램 본문에서만 가져와라. "
+                     "캘린더를 봤다고 쓰지 마라.\n")
 
     # finviz 맵 원본 데이터 — 되면 얹고, 막히면 그렇게 적는다
     lines.append("\n\n## finviz 맵 데이터\n")
