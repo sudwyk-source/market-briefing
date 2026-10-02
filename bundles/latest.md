@@ -1,6 +1,6 @@
 # 브리핑 수집 번들 — 0530시 회차
-생성: 2026-10-02 12:38 KST
-기본 구간: 10-01 22:00 ~ 10-02 12:38
+생성: 2026-10-02 12:54 KST
+기본 구간: 10-01 22:00 ~ 10-02 12:54
 확장 구간: 10-01 04:00 ~ 10-01 22:00 (직전 회차 보충용)
 
 
@@ -3408,47 +3408,59 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
  {
   "source": "yt/오선의 미국 증시 라이브 (미국 마감",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/한경 글로벌마켓 (뉴욕 특파원 매크로",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/소수몽키 (미국 테마·수혜주)",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/T3chfeed (테슬라·팔란티어·스",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/알상무 (금리·매크로)",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/한경 코리아마켓",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/슈카월드",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/머니코믹스",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
  },
  {
   "source": "yt/한희재의 투자교실",
   "status": "ERROR",
-  "detail": "HTTP 404"
+  "detail": "기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404"
+ },
+ {
+  "source": "youtube/피드주소",
+  "status": "ALL_FAILED",
+  "성공한후보": null,
+  "시도": [
+   "기본: HTTP 404",
+   "지역지정: HTTP 404",
+   "www없음: HTTP 404",
+   "UA없음: HTTP 404",
+   "피드전용UA: HTTP 404"
+  ]
  },
  {
   "source": "youtube/설명란",
@@ -3498,15 +3510,16 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
 ```
 
 ⚠️ 아래 소스가 정상 수집되지 않았다. 브리핑에 반드시 명시할 것:
-- yt/오선의 미국 증시 라이브 (미국 마감: ERROR HTTP 404
-- yt/한경 글로벌마켓 (뉴욕 특파원 매크로: ERROR HTTP 404
-- yt/소수몽키 (미국 테마·수혜주): ERROR HTTP 404
-- yt/T3chfeed (테슬라·팔란티어·스: ERROR HTTP 404
-- yt/알상무 (금리·매크로): ERROR HTTP 404
-- yt/한경 코리아마켓: ERROR HTTP 404
-- yt/슈카월드: ERROR HTTP 404
-- yt/머니코믹스: ERROR HTTP 404
-- yt/한희재의 투자교실: ERROR HTTP 404
+- yt/오선의 미국 증시 라이브 (미국 마감: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/한경 글로벌마켓 (뉴욕 특파원 매크로: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/소수몽키 (미국 테마·수혜주): ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/T3chfeed (테슬라·팔란티어·스: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/알상무 (금리·매크로): ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/한경 코리아마켓: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/슈카월드: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/머니코믹스: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- yt/한희재의 투자교실: ERROR 기본: HTTP 404 / 지역지정: HTTP 404 / www없음: HTTP 404 / UA없음: HTTP 404 / 피드전용UA: HTTP 404
+- youtube/피드주소: ALL_FAILED 
 - youtube/설명란: NO_VIDEO 
 - youtube/transcript: BLOCKED 
 - youtube/gemini: NO_KEY 
