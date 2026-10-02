@@ -1,6 +1,6 @@
 # 브리핑 수집 번들 — 0530시 회차
-생성: 2026-10-02 13:03 KST
-기본 구간: 10-01 22:00 ~ 10-02 13:03
+생성: 2026-10-02 13:13 KST
+기본 구간: 10-01 22:00 ~ 10-02 13:13
 확장 구간: 10-01 04:00 ~ 10-01 22:00 (직전 회차 보충용)
 
 
@@ -3241,668 +3241,182 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
 
 ### 오선의 미국 증시 라이브 (미국 마감 요약, 최우선)
 
-**【미국 증시 오늘의 요약】  연준 “추가 인상 서두르지 않는다”…국채 금리 하락에 미 증시 반등  -  2026/10/01** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**【미국 증시 오늘의 요약】  연준 “추가 인상 서두르지 않는다”…국채 금리 하락에 미 증시 반등  -  2026/10/01** — 10-02 13:13  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=GoLL1FrdQxc
 
 자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
 
 
-**【미국 증시 오늘의 요약】  물가는 식었는데 금리는 올랐다… 마이크론 호실적 발표  -  2026/09/30** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**【미국 증시 오늘의 요약】  물가는 식었는데 금리는 올랐다… 마이크론 호실적 발표  -  2026/09/30** — 10-02 13:13  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=one4OFrYtuU
 
 자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
 
 
-**【미국 증시 오늘의 요약】  10년물·30년물 동반 급등…유가 하락에도 증시 부담  -  2026/09/29** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**【미국 증시 오늘의 요약】  10년물·30년물 동반 급등…유가 하락에도 증시 부담  -  2026/09/29** — 10-02 13:13  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=mIa_U-HqaRA
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】 트럼프, 이란 제안 거부…유가·국채금리 뛰자 기술주 하락  -  2026/09/28** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=QvK6VlZvv9E
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】 국채 금리 5% 시대에도 증시는 버텼다…유가 2% 하락  -  2026/09/25** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=Xu6ceB6adAQ
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】 미·이란 호르무즈 재개방 논의! 꺾이지 않는 국채금리와 트럼프·시진핑 정상회담  -  2026/09/24** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=ZSsgmq96gFk
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】  "경제가 너무 좋아서 문제"… 견조함 넘어선 '과열' 징후...   -  2026/09/23** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=lYlebo_-Sn8
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】  트럼프 "이란 초토화 vs 합의" 발언에 유가 뚝↓… AI가 멱살 잡은 나스닥은 사상 최고치!   -  2026/09/22** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=18Vx3Pnz83I
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】  메타 '뮤즈' 효과에 반도체주 폭등, AMD 시총 1조 달러 시대   -  2026/09/21** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=VQPTp1CKIsI
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】  반도체주 급반등…국채금리 5%에도 기술주는 버텼다   -  2026/09/18** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=JxInhDNSPl8
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】  연준 금리인상에도 증시 급반등! 10년물 5% 붕괴·AI주 급등   -  2026/09/17** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=MqvAC4dWaqk
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**【미국 증시 오늘의 요약】  연준, 3년 만에 금리 올렸다… 워시 “인플레 너무 높다”   -  2026/09/16** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=UNuYoueYl-A
 
 자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
 
 
 ### 한경 글로벌마켓 (뉴욕 특파원 매크로, 최우선)
 
-**How U.S. Consumers Are Still Spending Their Money | Park Shin-young's Wall Street Anatomy** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**How U.S. Consumers Are Still Spending Their Money | Park Shin-young's Wall Street Anatomy** — 10-02 13:13  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=SNjvo56xCRQ
 
 자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
 
 
-**Declining New York, Rising Texas | Kim In-yeop's Silicon Valley Now** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Declining New York, Rising Texas | Kim In-yeop's Silicon Valley Now** — 10-02 13:13  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=H4OA3AlJIwo
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 확인 불가 — 5편 연속 차단이라 이번 회차는 여기서 자막 시도를 멈춘다.
 
 
-**Why Is the U.S. Stock Market Holding Up So Well Despite High Interest Rates? | Park Shin-young's ...** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Why Is the U.S. Stock Market Holding Up So Well Despite High Interest Rates? | Park Shin-young's ...** — 10-02 13:13  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=hSf0LLTgdU0
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Six Meetings in Three Days, What Was Achieved? | Lee Sang-won's Washington Now** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=bjrKtOuZB2E
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**The Theory of a Stock Market Peak, the AI Variable, and the Midterm Election Scenarios Wall Stree...** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=ngHKev0mByc
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**The 'Tamagotchi' Zuckerberg Brought Out... What Is Meta's Real Goal? | Wall Street Backbriefing** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=bPordRoqBuU
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**AI 채권시장서 승자와 패자 가려내야ㅣ직격인터뷰** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=2IfdeWrNkcw
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**What Does the 7-Second Handshake Between Trump and Xi Mean? | Is There Good News Despite the Inte...** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=sJ2PLe2jhzQ
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Why Even the World's Top Oil Producer Can't Control Gas Prices | Park Shin-young's Wall Street An...** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=KnrRaWWlVtY
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Will Nvidia still win when the AI chip race ends? The secret is ‘connectivity’ | Kim In-yeop’s Si...** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=T8ybOKpvubQ
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**How an Average New Yorker Becomes a Millionaire | Park Shin-young's Wall Street Anatomy** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=4Dj9-9tYiWc
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**China Preparing for War, U.S. Expecting Trade | Lee Sang-eun's Washington Now** — 10-02 13:04  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=g0FiyGQCVMc
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### 소수몽키 (미국 테마·수혜주)
 
-**Prepare for the New Normal of Ultra-High Interest Rates? Will Wall Street's Veteran Expert's Surp...** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Prepare for the New Normal of Ultra-High Interest Rates? Will Wall Street's Veteran Expert's Surp...** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=2cduC5_rK9I
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**The First-Ever Space Data Center: Will Google and SpaceX’s Bold Move Pay Off?** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**The First-Ever Space Data Center: Will Google and SpaceX’s Bold Move Pay Off?** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=kiQ_USot1go
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**AI Agents Are Hunting Down Your Idle Cash? The Stocks at Risk as Fears Become Reality** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**AI Agents Are Hunting Down Your Idle Cash? The Stocks at Risk as Fears Become Reality** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=Cswz8biSRHs
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Did Meta’s Bold Move Shock the Market? The New Beneficiaries of the Third AI Inflection Point** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=4muqJe1bX-I
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Anthropic and OpenAI’s Next Big AI Revolution: Where Is the Beneficiary? The New Investment Hub Q...** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=N8hjfIoLtV8
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Has World War III Quietly Begun? Trump’s Declaration of Territorial Expansion—A Warning Sign?** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=uWZtDWUzO94
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Trump's Final Gamble? Will the US-China Big Deal Save the Stock Market?** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=cNiqvNwYD4U
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**38 3 Sovereign AI Dell Server Final** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=1eV18vbBzZE
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**38.4 Druckenmiller on Interest Rate Hikes** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=mo2ukCmz_uc
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**38.2 Trump Handing Out Cash: Dividend Refunds** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=dBY4dYC-yzI
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Let's all slow down AI investment? AI leaders' surprise proposal, will it shake the stock market?** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=3ND2sRBMoNQ
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Major Nations Quietly Pulling Money Out of the US: Beneficiaries of the Massive Capital Shift** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=GMpIu3c-kVc
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### T3chfeed (테슬라·팔란티어·스페이스X)
 
-**이번 스타십 발사... 인류 역사상 정말 중요한 발사입니다.** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**이번 스타십 발사... 인류 역사상 정말 중요한 발사입니다.** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=zbZks-MhMkw
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**아이온큐, 이거 굉장히 중요합니다.** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**아이온큐, 이거 굉장히 중요합니다.** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=_SU7PIVm1Yw
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**이대로 가면 팔란티어 매출 폭발합니다** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**이대로 가면 팔란티어 매출 폭발합니다** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=uxEBeCoYKm8
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**[한글 자막] 역대급으로 미친 로켓 발사, 그 뒷 이야기** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=FgWnuzSuCVU
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**옵티머스 5천대 생산, "증거 나왔습니다."** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=kxoNwZT2d4o
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**앞으로 정말 큰 일이 벌어질겁니다. 엔비디아와 팔란티어의 만남** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=rYKkqsZCfWM
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**아이온큐, 차세대 시스템 공개됐습니다.** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=56H1z1Y47Lw
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**지금의 테슬라 주식은 얼마나 비싼걸까?** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=wepQcNWTYBA
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**테슬라 사이버캡이 난리난 진짜 이유** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=6OAMsqmaJ0E
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**지금 투자하려면 뇌구조 부터 바꿔야 합니다.** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=0_ylfzoVGrM
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**연말, 엔비디아는 300달러에 도달한다.** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=9LhfKtTP_Q8
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**[한글 자막] 스페이스X, 이제는 "우주 공항"을 만든다** — 10-02 13:05  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=ebLKVHlMprw
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### 알상무 (금리·매크로)
 
-**Has the hellfire begun?** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Has the hellfire begun?** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=LgnhhRZ9mHE
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**채권에 타보란 말야!** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**채권에 타보란 말야!** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=xjzJQ-mXBuI
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**미래를 모르는 뉴타입** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**미래를 모르는 뉴타입** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=Pye2jD8uFtQ
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**A Journey Toward Economic Ruin** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=8oXW1igDi6Y
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**What if KOSPI fluctuates sharply on Monday?** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=-zYRvDY9yaU
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Why Are Interest Rates Rising?** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=BtS2AJfv81g
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Why don't people go to traditional markets?** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=fTTEYFncY0U
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**German Gourmet Club** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=dPEG1OQXFsU
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Interest Rate Spike Drive** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=oJJ2_34-RRk
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**A comprehensive overview of the entire financial sector all at once!!!** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=6qZDyA5gVQo
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Never mind, time to update my resume.** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=eQ2D4kFRpSM
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**How to Spend a Stress-Free Holiday** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=rzB74JOcvQI
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### 한경 코리아마켓
 
-**The Ancient Choke Point Hidden in the Odyssey | Kim Dong-wook's Book GPT** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**The Ancient Choke Point Hidden in the Odyssey | Kim Dong-wook's Book GPT** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=AVqLfvHYlbQ
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**Why Investors Are Flooding Into Bond-Mixed ETFs** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Why Investors Are Flooding Into Bond-Mixed ETFs** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=PhZKF__n1Sg
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**The Simple Rules Behind ETF Naming | Money Guide** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**The Simple Rules Behind ETF Naming | Money Guide** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=HsMMY6ms7LM
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**An ETF Featuring Only Key Samsung & SK Group Affiliates | ETF Unboxing** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=iw42-5eiRCE
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**5% 넘으니 "6%까지 괜찮다" | "금리 올려야 증시가 산다"는 이유 | 빈난새의 빈틈없이마켓** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=mpB0KVw-IWU
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Where Did All That Tax Money Go? | Kim Dong-wook’s Book GPT** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=IfDd_AwAqQY
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**The Secret to Staying Stable in a Market Crash: The Principles of Rebalancing | Money Guide** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=xOhwsksrwhQ
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Why NAND in the AI Era? | ETF Unboxing** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=EHYBYi60Woc
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**The Paradox of Plenty | Kim Dong-wook’s Book GPT** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=tKfunTt7EvY
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Parking Accounts, CMAs, and ETFs: Which One Is Right for Me? | Money Guide** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=v9glAB30dAM
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**From Department Stores to Coupang... A History of Survival in the Retail Industry | Kim Dong-wook...** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=ssJ8NlQaRsM
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**jusung Engineering: "Technology the World Didn't Believe In, Commercializing by Year-End"** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=4oNJB4Fk_q4
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### 슈카월드
 
-**KNPA BDC Feedback Incorporation Version 2** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**KNPA BDC Feedback Incorporation Version 2** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=vbDEHKhogXU
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**Busan North Port hits the jackpot thanks to Bukang-i** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Busan North Port hits the jackpot thanks to Bukang-i** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=l8kRYkK8ptc
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**Can Muse, the AI in My Pocket, Lead the Way to AI Democratization?** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**Can Muse, the AI in My Pocket, Lead the Way to AI Democratization?** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=voqHsOP4m54
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**US-China Summit Results: China Satisfied, Japan Got Walloped** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=A1j-pOb-vYY
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Why Do Americans Wear Shoes Inside the House?** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=nOdLfDOAMvg
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Controversy over the blonde special advisor who never leaves Trump's side** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=s7cPzKqb65M
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**10x Growth, Nigeria Swept Up in a National Investment Frenzy** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=92qTnyHoEnw
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Escalation Draft** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=VXtp9HEqrx0
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Japan plays the broke card at the Asian Games** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=XT11yoScLBA
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Ministry of Economy and Finance BDC Edited Version RE** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=93iH1jbSiPw
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**"Should I buy now?" Young Japanese people at a crossroads** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=x65FxA3UZ6o
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**We’re Only Hiring Experienced Fresh Graduates** — 10-02 13:06  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=hQ3gURmunP4
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### 머니코믹스
 
-**역사적으로 사람들은 이때 주식을 팝니다** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**역사적으로 사람들은 이때 주식을 팝니다** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=GdHBT_Ret4U
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**A Realistic Property Tour** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**A Realistic Property Tour** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=-xjGFvbjQWk
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**[ 𝕡𝕝𝕒𝕪𝕝𝕚𝕤𝕥 ] 계좌관리는 못해도 기분관리는 할 수 있잖아** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**[ 𝕡𝕝𝕒𝕪𝕝𝕚𝕤𝕥 ] 계좌관리는 못해도 기분관리는 할 수 있잖아** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=GgaKVbx3nGk
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Dividend Stocks for the Chilly Season** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=IzKQa_jMpOY
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Even Chuseok Is Ultimately an Investment** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=ewI-q2kmkDk
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Syuka, That’s Not How You Trade Stocks** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=yfj7s3Rs1cE
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**The Secret to Surviving 20 Years in the Cutthroat World of Yeouido** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=R6bSCN9wopk
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Realistic Financial Planning for People in Their 20s and 30s** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=LALHM41PKzY
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Do you know why retail investors always get wiped out?** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=4QoA8RDFJJ8
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Why you get trapped after buying oil stocks when oil prices rise** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=00IQO2Vb4gs
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Is this how you're supposed to do a stock study group?** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=fO14LbuzefI
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**Nini-ssam, what should I look for when choosing an ETF?** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=ju9EZDBo6c0
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 ### 한희재의 투자교실
 
-**핵심을 알면 어렵지 않았습니다** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**핵심을 알면 어렵지 않았습니다** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=3Bv9vT7gxNY
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**단 20분으로, 나에게 적합한 투자 방법 찾기** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**단 20분으로, 나에게 적합한 투자 방법 찾기** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=Nria1EPwgP4
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
-**10분만 집중! 매도 기준과 고점 신호 총정리** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
+**10분만 집중! 매도 기준과 고점 신호 총정리** — 10-02 13:14  [지난 수집 이후 신규 — 업로드 시각 불명]
 https://www.youtube.com/watch?v=W8esnHjYDTk
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**텐배거 기업은 이렇게 찾아보세요** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=jLqEcA9wFis
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**AI 투자 고민, 영상 한편으로 끝내기** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=5F1VlvLQdXU
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**지금 '000'에 투자 안 하면 평생 뒤처집니다** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=pCqjmebsdV0
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**통신사에서 AI인프라 기업으로, 최소 2배 성장할 SK텔레콤** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=_3710CRiiU8
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**조용히 상승을 준비하고 있습니다** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=p7ti7AQFCZI
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**엔비디아가 직접 선택한 AI 파트너** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=8pU4MHBx91s
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**스페이스X 투자 전 반드시 보세요** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=TKoqD7aE-Pw
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**투자 거장들이 집중 매수하는 기업 살펴보기** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=2CtUhDmX2fM
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
-
-
-**How to determine the end of a bubble** — 10-02 13:07  ⚠️ 업로드 시각 불명 — 구간 안인지 확신 못 함
-https://www.youtube.com/watch?v=OtoztNAQS2E
-
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 시도 생략(이번 회차 차단 확인됨). 제목만. 내용 해설을 쓰지 말 것.
 
 
 
@@ -4038,56 +3552,65 @@ https://www.youtube.com/watch?v=OtoztNAQS2E
  {
   "source": "yt/오선의 미국 증시 라이브 (미국 마감",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/한경 글로벌마켓 (뉴욕 특파원 매크로",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/소수몽키 (미국 테마·수혜주)",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/T3chfeed (테슬라·팔란티어·스",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/알상무 (금리·매크로)",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/한경 코리아마켓",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/슈카월드",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/머니코믹스",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "yt/한희재의 투자교실",
   "status": "ok",
-  "in_window": 12,
-  "in_lookback": 0
+  "방식": "첫실행(기준점 생성)",
+  "목록": 12,
+  "다룸": 3
  },
  {
   "source": "youtube/피드주소",
@@ -4102,21 +3625,26 @@ https://www.youtube.com/watch?v=OtoztNAQS2E
   ]
  },
  {
+  "source": "youtube/자막중단",
+  "status": "GAVE_UP",
+  "사유": "5편 연속 차단 — 남은 영상은 자막을 시도하지 않음"
+ },
+ {
   "source": "youtube/설명란",
   "status": "NO_DESC",
   "설명란있음": 0,
-  "설명란빔": 108
+  "설명란빔": 27
  },
  {
   "source": "youtube/transcript",
   "status": "BLOCKED",
   "실제자막": 0,
   "Gemini분석": 0,
-  "failed": 108,
+  "failed": 5,
   "via": null,
   "why": [
-   "자막: RequestBlocked \nCould not retrieve a transcript for the video https://www.y / 자막-ytdlp: RuntimeError ERROR: [youtube] -xjGFvbjQWk: Sign ",
-   "자막: RequestBlocked \nCould not retrieve a transcript for the video https://www.y / 자막-ytdlp: RuntimeError ERROR: [youtube] -zYRvDY9yaU: Sign "
+   "자막: RequestBlocked \nCould not retrieve a transcript for the video https://www.y / 자막-ytdlp: RuntimeError ERROR: [youtube] GoLL1FrdQxc: Sign ",
+   "자막: RequestBlocked \nCould not retrieve a transcript for the video https://www.y / 자막-ytdlp: RuntimeError ERROR: [youtube] H4OA3AlJIwo: Sign "
   ]
  },
  {
@@ -4152,6 +3680,7 @@ https://www.youtube.com/watch?v=OtoztNAQS2E
 ```
 
 ⚠️ 아래 소스가 정상 수집되지 않았다. 브리핑에 반드시 명시할 것:
+- youtube/자막중단: GAVE_UP 
 - youtube/설명란: NO_DESC 
 - youtube/transcript: BLOCKED 
 - youtube/gemini: NO_KEY 
