@@ -1,6 +1,6 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-10-03 08:59 KST
-기본 구간: 10-03 05:30 ~ 10-03 08:59
+생성: 2026-10-03 09:42 KST
+기본 구간: 10-03 05:30 ~ 10-03 09:42
 확장 구간: 10-02 11:30 ~ 10-03 05:30 (직전 회차 보충용)
 
 
@@ -259,7 +259,7 @@ https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 25건 / 확장 구간 32건 (페이지에서 파싱한 총 게시물 59건)
+구간 내 27건 / 확장 구간 32건 (페이지에서 파싱한 총 게시물 76건)
 
 **[10-03 07:34]**
 🌎
@@ -786,6 +786,14 @@ https://www.youtube.com/watch?v=hHTPWibzOcI
 **[10-03 08:39]**
 https://n.news.naver.com/article/087/0001221812?type=breakingnews&cds=news_edit
 [링크] Naver / [속보] 북한, 원산서 동해상으로 탄도미사일 발사…올해 15번째 / 북한이 3일 오전 원산 일대에서 동해상으로 탄도미사일을 발사했다. 합동참모본부는 이날 “오전 6시 30분경 북한 원산 일대에서 동해상으로 발사된 탄도미사일을 포착했다”고 밝혔다. 군 당국은 현재 해당 미사일의 제원과
+
+**[10-03 09:00]**
+이란과 협상할 수 있는 사람은 아무도 없습니다. 아무도 대통령이 되고 싶어하지 않습니다.
+제가 "이란에서는 누구와 이야기해야 할까요?"라고 묻자, 아무도 대답하지 않았습니다. 마치 아무도 없는 것처럼요.
+
+**[10-03 09:28]**
+받) 조종사 알하맘 알하마미 사진 공개
+보도에 따르면 심문 과정에서 항공기를 이스라엘 영토에 추락시킬 계획이었다고 자백.
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -1602,7 +1610,29 @@ https://www.youtube.com/watch?v=lQ1IK3FhiqY
 
 
 ### 한경 글로벌마켓 (뉴욕 특파원 매크로, 최우선)
-지난 수집 이후 신규 없음
+
+**AI 시대, 원전의 운명을 쥔 단 한 곳…원자로 짓는데 연료가 없다? | 바이아메리카 in NY** — 10-03 09:00
+https://www.youtube.com/watch?v=dZu9yhEtMEM
+
+설명란 (609자):
+AI 데이터센터가 늘어날수록 전력 수요는 폭발하고, 미국은 다시 원전에 주목하고 있습니다. 하지만 원자로를 지어도 차세대 원전에 필요한 연료, HALEU가 없으면 가동할 수 없습니다. 러시아 로사톰이 절반을 쥐고 있는 이 좁은 병목 시장에서, 파산 이력까지 있는 미국의 한 회사가 어떻게 미국 원전 르네상스의 유일한 카드로 떠올랐는지 살펴봅니다. 16기에서 11,000기로, 지금 오하이오의 한 공장에서 벌어지고 있는 미국의 원전 연료 공급망 재건 도전은 성공할 수 있을까요? 
+
+#센트러스에너지 #ai #로사톰 #테라파워 #한글마 
+
+한국경제신문 구독하기
+▶️https://vo.la/N79FE1B
+
+한국경제신문의 새로운 투자 정보 플랫폼 '한경 프리미엄9' 바로가기
+▶️ http://www.hankyung.com/premium9
+▶️ '한국경제' 앱에서도 이용할 수 있습니다
+📰한국경제신문·모바일한경 본사 자동이체 구독자는 무료입니다.(이벤트 기간한정)
+프리미엄9만 가입하면 월 2만원(첫 6개월 1만원), 연 10만원입니다.
+
+ⓒ영상의 저작권리는 한국경제신문에 있으며 무단 도용시 법적 책임을 질 수 있습니다
+영상 내 일부 이미지는 게티이미지뱅크의 정식 라이선스를 받아 사용했습니다
+
+
+자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
 
 
 ### 소수몽키 (미국 테마·수혜주)
@@ -1665,7 +1695,7 @@ https://www.youtube.com/watch?v=8Ma_UyExF6c
  개미는지금 라이브는 매주 수 저녁 7시에 진행됩니다.
 
 
-자막 확인 불가. 제목/설명만. 내용 해설을 쓰지 말 것.
+자막 확인 불가 — 5편 연속 차단이라 이번 회차는 여기서 자막 시도를 멈춘다.
 
 
 ### 한희재의 투자교실
@@ -1769,9 +1799,9 @@ https://www.youtube.com/watch?v=8Ma_UyExF6c
  {
   "source": "tg/insidertracking",
   "status": "ok",
-  "in_window": 25,
+  "in_window": 27,
   "in_lookback": 32,
-  "parsed": 59
+  "parsed": 76
  },
  {
   "source": "tg/TNBfolio",
@@ -1820,7 +1850,7 @@ https://www.youtube.com/watch?v=8Ma_UyExF6c
   "status": "ok",
   "방식": "시각기준",
   "목록": 15,
-  "다룸": 0
+  "다룸": 1
  },
  {
   "source": "yt/소수몽키 (미국 테마·수혜주)",
@@ -1878,9 +1908,14 @@ https://www.youtube.com/watch?v=8Ma_UyExF6c
   "url": "https://www.youtube.com/feeds/videos.xml"
  },
  {
+  "source": "youtube/자막중단",
+  "status": "GAVE_UP",
+  "사유": "5편 연속 차단 — 남은 영상은 자막을 시도하지 않음"
+ },
+ {
   "source": "youtube/설명란",
   "status": "ok",
-  "설명란있음": 4,
+  "설명란있음": 5,
   "설명란빔": 0
  },
  {
@@ -1888,7 +1923,7 @@ https://www.youtube.com/watch?v=8Ma_UyExF6c
   "status": "BLOCKED",
   "실제자막": 0,
   "Gemini분석": 0,
-  "failed": 4,
+  "failed": 5,
   "via": null,
   "why": [
    "자막: RequestBlocked \nCould not retrieve a transcript for the video https://www.y / 자막-ytdlp: RuntimeError ERROR: [youtube] 6w1q8kM9xx4: Sign ",
@@ -1933,6 +1968,7 @@ https://www.youtube.com/watch?v=8Ma_UyExF6c
 ```
 
 ⚠️ 아래 소스가 정상 수집되지 않았다. 브리핑에 반드시 명시할 것:
+- youtube/자막중단: GAVE_UP 
 - youtube/transcript: BLOCKED 
 - youtube/gemini: NO_KEY 
 - members/PC보충: NEVER_RUN 
