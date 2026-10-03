@@ -335,6 +335,11 @@ def _yt_list_ytdlp(cid: str, limit: int = 12):
 
 YT_PROBE = []   # 어느 후보가 무엇을 돌려줬는지 (첫 채널에서만 기록)
 
+# 유튜브 수집 on/off. 자막이 유튜브의 IP 차단으로 안 들어오는 동안은 꺼 둔다.
+# 제목만 받아 봐야 번들만 길어지고 브리핑이 추측할 여지만 생긴다.
+# 되살리려면 워크플로의 수집 단계 env 에 YOUTUBE: "on" 을 넣으면 된다.
+YOUTUBE_ON = os.environ.get("YOUTUBE", "off").strip().lower() in ("on", "1", "true", "yes")
+
 TR_GIVEUP = 5          # 연속 이만큼 자막이 막히면 이번 회차는 포기한다
 FIRST_RUN_NEW = 3      # 기준점이 없는 첫 실행에서 채널당 다룰 최신 편수
 YT_SEEN_PATH = Path("bundles/yt_seen.json")
@@ -824,9 +829,20 @@ def build(session, out_path, want_transcript=True, img_dir=None):
 
     # 유튜브
     lines.append("\n\n## 유튜브\n")
-    yt_seen = load_yt_seen()
+    if not YOUTUBE_ON:
+        # 자막이 IP 차단으로 안 들어오는 동안은 제목만 쌓여 번들만 길어진다.
+        # 껐다는 사실을 분명히 남겨, 브리핑이 '영상이 없었다'로 쓰지 않게 한다.
+        lines.append("**이번 운영에서 유튜브 수집은 꺼져 있다.** 자막이 유튜브의 "
+                     "데이터센터 IP 차단으로 들어오지 않아, 제목만 받아 봐야 "
+                     "내용이 없기 때문이다. 유튜브를 근거로 아무것도 쓰지 말고, "
+                     "'영상이 없었다'고도 쓰지 마라 — 안 가져온 것이다.\n")
+        checks.append({"source": "youtube/전체", "status": "OFF",
+                       "사유": "자막 차단으로 사용자가 꺼둠. 되살리려면 워크플로에 YOUTUBE: \"on\""})
+        yt_seen = {}
+    else:
+        yt_seen = load_yt_seen()
     first_run = not yt_seen
-    for cid, desc in YOUTUBE:
+    for cid, desc in (YOUTUBE if YOUTUBE_ON else []):
         try:
             vids = fetch_youtube_list(cid)
             known = set(yt_seen.get(cid) or [])
@@ -897,18 +913,21 @@ def build(session, out_path, want_transcript=True, img_dir=None):
             checks.append({"source": f"yt/{desc[:20]}", "status": "ERROR", "detail": str(e)[:120]})
             lines.append(f"\n### {desc} — 수집 실패: {type(e).__name__}\n")
 
-    save_yt_seen(yt_seen)
-    checks.append({"source": "youtube/피드주소", "status": "ok" if (YT_PROBE and YT_PROBE[0].get("성공한후보")) else "ALL_FAILED",
-                   **(YT_PROBE[0] if YT_PROBE else {"note": "채널을 하나도 시도하지 않음"})})
+    if YOUTUBE_ON:
+        save_yt_seen(yt_seen)
+        checks.append({"source": "youtube/피드주소",
+                       "status": "ok" if (YT_PROBE and YT_PROBE[0].get("성공한후보")) else "ALL_FAILED",
+                       **(YT_PROBE[0] if YT_PROBE else {"note": "채널을 하나도 시도하지 않음"})})
     if tr_dead:
         checks.append({"source": "youtube/자막중단", "status": "GAVE_UP",
                        "사유": f"{TR_GIVEUP}편 연속 차단 — 남은 영상은 자막을 시도하지 않음"})
 
-    checks.append({"source": "youtube/설명란",
-                   "status": "ok" if desc_got else ("NO_DESC" if desc_empty else "NO_VIDEO"),
-                   "설명란있음": desc_got, "설명란빔": desc_empty})
+    if YOUTUBE_ON:
+        checks.append({"source": "youtube/설명란",
+                       "status": "ok" if desc_got else ("NO_DESC" if desc_empty else "NO_VIDEO"),
+                       "설명란있음": desc_got, "설명란빔": desc_empty})
 
-    if want_transcript:
+    if want_transcript and YOUTUBE_ON:
         real = [v for v in tr_ok if v != GEMINI_LABEL]
         checks.append({"source": "youtube/transcript",
                        "status": "ok" if tr_ok else "BLOCKED",
