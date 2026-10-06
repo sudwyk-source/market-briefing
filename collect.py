@@ -748,7 +748,11 @@ SECTORS = [
 # "NVDA,AVGO,..." 형태로 넣으면 그 값이 우선한다.
 DEFAULT_WATCHLIST = ["NVDA", "AVGO", "ARM", "MRVL", "TSM", "MU", "SNDK",
                      "GOOG", "AMZN", "ORCL", "TSLA", "LITE", "AAOI",
-                     "ETN", "BE", "GEV", "SOXX", "SPYM", "QQQM", "AIPO"]
+                     "ETN", "BE", "GEV", "SOXX", "SPYM", "QQQM", "AIPO",
+                     # 경기방어·배당 — AI/반도체 쏠림을 상쇄하는 자리
+                     "LLY",   # 일라이 릴리 (헬스케어)
+                     "KO",    # 코카콜라 (필수소비재)
+                     "O"]     # 리얼티 인컴 (리츠 — 금리에 직접 반응)
 
 
 def watchlist():
