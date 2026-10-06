@@ -153,6 +153,34 @@ def market_open(d: date):
     return True, ""
 
 
+# 회차는 06:10과 22:05이 번갈아 온다. 다음 회차가 언제인지 알아야
+# '이번이 휴장 중 마지막 회차인가'를 판단할 수 있다.
+NEXT_BRIEF = {"0530": ("same", 22, 5), "22": ("next", 6, 10)}
+
+
+def next_brief_moment(session: str, now: datetime) -> datetime:
+    kind, h, m = NEXT_BRIEF[session]
+    d = now if kind == "same" else now + timedelta(days=1)
+    return d.replace(hour=h, minute=m, second=0, microsecond=0)
+
+
+def should_brief(session: str, now: datetime):
+    """(브리핑할까, 휴장 사유, 밀린 것을 전달하는 회차인가)
+
+    휴장 중이라도 **다음 회차에 장이 열리면 이번 회차는 보낸다.** 그 자리가
+    연휴·주말 동안 쌓인 것을 받는 자리이기 때문이다.
+    주말이면 월요일 아침 06:10이 바로 그 자리다 — 미국 장은 아직 안 열렸지만
+    토·일 이틀치 텔레그램이 거기 들어온다.
+    """
+    today_open, why = market_open(us_session_date(now))
+    if today_open:
+        return True, "", False
+    nxt_open, _ = market_open(us_session_date(next_brief_moment(session, now)))
+    if nxt_open:
+        return True, why, True      # 휴장 끝 — 밀린 것을 여기서 전달
+    return False, why, False        # 휴장 한가운데 — 건너뛴다
+
+
 def load_coverage():
     try:
         return json.loads(COVERAGE_PATH.read_text(encoding="utf-8"))
@@ -910,34 +938,56 @@ def build(session, out_path, want_transcript=True, img_dir=None):
 
     sess_date = us_session_date(now)
     is_open, closed_why = market_open(sess_date)
+    brief, _why, catchup = should_brief(session, now)
     span_h = round((now - base).total_seconds() / 3600, 1)
 
     lines.append(f"# 브리핑 수집 번들 — {session}시 회차")
-    if not is_open:
-        # 번들 맨 위에 둔다. 브리핑이 제일 먼저 읽는 자리다.
+
+    if not brief:
+        # 휴장 한가운데. 번들 맨 위에 둔다 — 브리핑이 제일 먼저 읽는 자리다.
         lines.append(
-            f"\n## ★★ 오늘은 미국 휴장일이다 — 브리핑을 쓰지 마라 ★★\n\n"
-            f"미국 동부 기준 {sess_date} 는 **{closed_why}** 로 장이 열리지 않는다.\n\n"
-            f"아래 내용을 **한 줄로만** 출력하고 끝내라. [A]~[J] 섹션을 만들지 마라:\n\n"
-            f"> 미국 휴장({closed_why}, {sess_date}) — 이번 회차 브리핑 없음. "
-            f"이 구간의 내용은 장이 열리는 날 회차에 합쳐서 전달됩니다.\n\n"
-            f"이 구간에 쌓인 글은 버려지지 않는다. 다음 거래일 회차의 구간이 "
-            f"여기까지 자동으로 넓어져서 함께 다뤄진다.\n")
+            f"\n## ★★ 휴장 중 — 브리핑을 쓰지 마라 ★★\n\n"
+            f"미국 동부 기준 {sess_date} 는 **{closed_why}** 로 장이 열리지 않고, "
+            f"다음 회차에도 열리지 않는다.\n\n"
+            f"아래를 **한 줄로만** 출력하고 끝내라. [A]~[J] 섹션을 만들지 마라:\n\n"
+            f"> 미국 휴장({closed_why}) — 이번 회차 브리핑 없음. "
+            f"쌓인 내용은 장이 다시 열리기 직전 회차에 합쳐서 전달됩니다.\n\n"
+            f"이 구간의 글은 버려지지 않는다. 휴장이 끝나는 회차의 구간이 "
+            f"여기까지 자동으로 넓어진다.\n")
+
+    elif catchup:
+        # 휴장이 끝나는 자리. 여기서 밀린 것을 전부 전달한다.
+        lines.append(
+            f"\n## ★★ 휴장이 끝났다 — 밀린 {span_h}시간치를 한 번에 전달하는 회차 ★★\n\n"
+            f"**이번 회차에는 새로 마감한 미국 장이 없다**(동부 {sess_date} 는 {closed_why}). "
+            f"지수 마감·섹터 수치를 '이번 세션'으로 쓰지 마라. 직전 거래일 마감치이고, "
+            f"그렇게 밝혀서 써라.\n\n"
+            f"대신 **휴장 동안 쌓인 텔레그램·리서치가 이 번들의 본체다.** "
+            f"{span_h}시간치가 들어 있다.\n\n"
+            f"- [A]~[C]는 휴장 동안의 뉴스·정책·지정학·실적을 중심으로 쓴다\n"
+            f"- [B] 지수 칸은 **'직전 거래일 마감 기준'**임을 반드시 표기한다\n"
+            f"- [D]에서는 양이 많아도 **한 줄씩이라도 전부 남겨라.** 요약하지 마라\n"
+            f"- [I]에는 장이 다시 열린 뒤 처음 볼 것을 적는다\n")
+
     elif span_h > 20:
         lines.append(
-            f"\n## ★ 휴장 뒤 첫 회차 — 구간이 평소보다 넓다 ★\n\n"
-            f"직전 거래일 이후 {span_h}시간이 밀려 있었다(연휴·주말). "
-            f"평소 한 회차보다 많이 들어오니 **중요도 순으로 추리되, "
-            f"[D]에서는 한 줄씩이라도 전부 남겨라.** 양이 많다고 요약하지 마라.\n")
+            f"\n## ★ 구간이 평소보다 넓다 ({span_h}시간) ★\n\n"
+            f"직전 회차 이후 그만큼 밀려 있었다. 평소보다 많이 들어오니 "
+            f"**중요도 순으로 추리되, [D]에서는 한 줄씩이라도 전부 남겨라.** "
+            f"양이 많다고 요약하지 마라.\n")
 
+    state = ("개장" if is_open else
+             f"휴장({closed_why}) — 밀린 것을 전달하는 회차" if catchup else
+             f"휴장({closed_why})")
     lines.append(f"생성: {now:%Y-%m-%d %H:%M} KST")
-    lines.append(f"미국 거래일: {sess_date} ({'개장' if is_open else '휴장 — ' + closed_why})")
+    lines.append(f"미국 거래일: {sess_date} ({state})")
     lines.append(f"기본 구간: {base:%m-%d %H:%M} ~ {now:%m-%d %H:%M}  ({span_h}시간)")
     lines.append(f"확장 구간: {ext:%m-%d %H:%M} ~ {base:%m-%d %H:%M} (직전 회차 보충용)\n")
 
-    checks.append({"source": "시장/개장여부", "status": "OPEN" if is_open else "CLOSED",
+    checks.append({"source": "시장/개장여부",
+                   "status": "OPEN" if is_open else ("CATCHUP" if catchup else "CLOSED"),
                    "미국거래일": str(sess_date), "사유": closed_why or "정상 거래일",
-                   "구간시간": span_h})
+                   "브리핑": brief, "구간시간": span_h})
 
     # 텔레그램
     lines.append("\n## 텔레그램\n")
@@ -1231,16 +1281,17 @@ def build(session, out_path, want_transcript=True, img_dir=None):
     text = "\n".join(lines)
     Path(out_path).write_text(text, encoding="utf-8")
 
-    # ★ 거래일에만 '여기까지 덮었다'를 적는다. 휴장일에는 적지 않는다.
-    #   그래야 연휴 뒤 첫 회차의 구간이 연휴 직전까지 저절로 넓어진다.
-    if is_open:
+    # ★ '브리핑을 낸 회차'에서만 여기까지 덮었다고 적는다.
+    #   휴장 한가운데 회차는 적지 않아야, 휴장이 끝나는 회차의 구간이
+    #   휴장 직전까지 저절로 넓어진다.
+    if brief:
         cov = load_coverage()
         cov["last"] = now.isoformat(timespec="seconds")
         cov["last_session"] = session
         save_coverage(cov)
     else:
         print(f"휴장({closed_why}) — coverage 워터마크를 올리지 않는다. "
-              f"이 구간은 다음 거래일 회차가 덮는다.", file=sys.stderr)
+              f"이 구간은 휴장이 끝나는 회차가 덮는다.", file=sys.stderr)
 
     print(f"번들 저장: {out_path}  ({len(text):,}자)", file=sys.stderr)
     for c in checks:
