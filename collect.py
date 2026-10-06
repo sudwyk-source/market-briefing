@@ -19,8 +19,9 @@ import os
 import re
 import sys
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -61,6 +62,111 @@ SESSION_WINDOW = {
 }
 LOOKBACK_HOURS = 18  # 직전 회차가 빠졌을 수 있으므로 이만큼 더 거슬러 올라간다(직전 구간 전체를 덮는 길이)
 
+MAX_CATCHUP_DAYS = 7     # 휴장이 길어도 구간이 무한정 넓어지지 않게
+COVERAGE_PATH = Path("bundles/coverage.json")   # 마지막으로 '거래일에' 덮은 시각
+
+
+# ──────────────── 미국 휴장일 ────────────────
+# 연휴 동안에는 브리핑을 내지 않고, 장이 다시 열리는 날 밀린 구간을 통째로 덮는다.
+# 날짜를 손으로 박아두면 해가 바뀔 때 조용히 틀리므로 규칙으로 계산한다.
+
+ET = ZoneInfo("America/New_York")
+
+
+def _easter(year: int) -> date:
+    """부활절 일요일 (그레고리력 계산법). 성금요일은 이보다 이틀 앞."""
+    a, b, c = year % 19, year // 100, year % 100
+    d, e = b // 4, b % 4
+    f, g = (b + 8) // 25, (b - (b + 8) // 25 + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = c // 4, c % 4
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    mo = (h + l - 7 * m + 114) // 31
+    da = ((h + l - 7 * m + 114) % 31) + 1
+    return date(year, mo, da)
+
+
+def _nth_weekday(year, month, weekday, n):
+    """그 달의 n번째 특정 요일 (weekday: 월=0). n=-1 이면 마지막."""
+    if n > 0:
+        d = date(year, month, 1)
+        d += timedelta(days=(weekday - d.weekday()) % 7)
+        return d + timedelta(weeks=n - 1)
+    # 마지막 주 — 그 달 마지막 날에서 뒤로 물러난다.
+    # (28일부터 앞으로 세는 방식은 메모리얼 데이를 한 주 당겨 틀린다)
+    last = (date(year, 12, 31) if month == 12
+            else date(year, month + 1, 1) - timedelta(days=1))
+    return last - timedelta(days=(last.weekday() - weekday) % 7)
+
+
+def _observed(d: date) -> date:
+    """토요일이면 금요일로, 일요일이면 월요일로 당겨/밀려 쉰다."""
+    if d.weekday() == 5:
+        return d - timedelta(days=1)
+    if d.weekday() == 6:
+        return d + timedelta(days=1)
+    return d
+
+
+def us_holidays(year: int) -> dict:
+    """뉴욕증권거래소 정규 휴장일 {날짜: 이름}"""
+    h = {
+        _nth_weekday(year, 1, 0, 3): "마틴 루서 킹의 날",
+        _nth_weekday(year, 2, 0, 3): "대통령의 날",
+        _easter(year) - timedelta(days=2): "성금요일",
+        _nth_weekday(year, 5, 0, -1): "메모리얼 데이",
+        _observed(date(year, 6, 19)): "준틴스",
+        _observed(date(year, 7, 4)): "독립기념일",
+        _nth_weekday(year, 9, 0, 1): "노동절",
+        _nth_weekday(year, 11, 3, 4): "추수감사절",
+        _observed(date(year, 12, 25)): "성탄절",
+    }
+    # 새해만 예외다. 1월 1일이 토요일이면 NYSE는 **아예 쉬지 않는다**
+    # (전년 12월 31일을 앞당겨 쉬지도, 1월 3일로 미루지도 않는다).
+    # 2028년이 그런 해다 — NYSE 공식 안내에 명시돼 있다.
+    jan1 = date(year, 1, 1)
+    if jan1.weekday() != 5:
+        h[_observed(jan1)] = "새해"
+    return h
+
+
+def us_session_date(now_kst: datetime) -> date:
+    """이 시각의 브리핑이 다루는 미국 거래일(동부 기준 날짜).
+
+    마감 회차는 06:10 KST = 전날 17:10 ET → 방금 닫힌 그 거래일.
+    개장 전 회차는 22:05 KST = 당일 09:05 ET → 곧 열릴 그 거래일.
+    둘 다 '동부 시각으로 변환한 날짜'가 정답이라 분기가 필요 없다.
+    """
+    return now_kst.astimezone(ET).date()
+
+
+def market_open(d: date):
+    """(열리는가, 닫힌 이유)"""
+    if d.weekday() == 5:
+        return False, "토요일"
+    if d.weekday() == 6:
+        return False, "일요일"
+    name = us_holidays(d.year).get(d)
+    if name:
+        return False, name
+    return True, ""
+
+
+def load_coverage():
+    try:
+        return json.loads(COVERAGE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def save_coverage(d):
+    try:
+        COVERAGE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        COVERAGE_PATH.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
+    except Exception:
+        pass
+
 
 # ─────────────────────────── 유틸 ───────────────────────────
 
@@ -74,7 +180,23 @@ def window(session: str, now: datetime = None):
         start = now.replace(hour=h, minute=m, second=0, microsecond=0)
         if start > now:
             start -= timedelta(days=1)
-    return start, start - timedelta(hours=LOOKBACK_HOURS), now
+    ext = start - timedelta(hours=LOOKBACK_HOURS)
+
+    # 휴장으로 회차를 건너뛴 만큼 구간을 뒤로 넓힌다.
+    # coverage.json 에는 '마지막으로 거래일에 덮은 시각'만 적힌다(휴장일에는 안 적는다).
+    # 그래서 연휴 뒤 첫 회차의 구간이 연휴 직전까지 저절로 늘어난다.
+    wm = load_coverage().get("last")
+    if wm:
+        try:
+            w = datetime.fromisoformat(wm)
+            floor = now - timedelta(days=MAX_CATCHUP_DAYS)   # 무한정 넓어지지 않게
+            w = max(w, floor)
+            if w < start:
+                start = w
+                ext = min(ext, w - timedelta(hours=LOOKBACK_HOURS))
+        except ValueError:
+            pass
+    return start, ext, now
 
 
 def clean(text: str) -> str:
@@ -241,9 +363,21 @@ def download_images(posts, outdir: Path, channel: str, limit: int = 12):
     return saved
 
 
-def fetch_telegram(channel: str, since: datetime, max_pages: int = 6):
-    """since 이후 게시물을 모을 때까지 ?before= 로 거슬러 올라간다."""
+TG_PAGE_CAP = 40        # 연휴 뒤 긴 구간에서도 끝까지 거슬러 올라갈 수 있게
+
+
+def fetch_telegram(channel: str, since: datetime, max_pages: int = None):
+    """since 이후 게시물을 모을 때까지 ?before= 로 거슬러 올라간다.
+
+    페이지 수를 구간 길이에 맞춘다. 연휴 뒤 100시간짜리 구간을 6페이지로
+    끊으면 중간이 통째로 사라지는데, 그게 조용히 일어난다.
+    끝까지 못 갔으면 reached_end=False 로 올려 상위에서 경고하게 한다.
+    """
+    if max_pages is None:
+        hours = max(1, (datetime.now(KST) - since).total_seconds() / 3600)
+        max_pages = min(TG_PAGE_CAP, max(6, int(hours / 2)))
     collected, seen, before, pages, parsed_any = [], set(), None, 0, 0
+    reached_end = False
     while pages < max_pages:
         url = f"https://t.me/s/{channel}" + (f"?before={before}" if before else "")
         r = get(url)
@@ -252,6 +386,7 @@ def fetch_telegram(channel: str, since: datetime, max_pages: int = 6):
         posts = parse_telegram(r.text, channel)
         parsed_any += len(posts)
         if not posts:
+            reached_end = True       # 더 받을 게 없다 — 정상 종료
             break
         for p in posts:
             key = p["id"] or p["dt"].isoformat()
@@ -261,14 +396,16 @@ def fetch_telegram(channel: str, since: datetime, max_pages: int = 6):
         pages += 1
         oldest = min(p["dt"] for p in posts)
         if oldest <= since:
-            break                      # 충분히 거슬러 올라감
+            reached_end = True         # 충분히 거슬러 올라감
+            break
         ids = [p["id"] for p in posts if p["id"]]
         if not ids:
+            reached_end = True
             break
         before = min(ids)
         time.sleep(0.4)
     collected.sort(key=lambda p: p["dt"])
-    return collected, parsed_any
+    return collected, parsed_any, reached_end
 
 
 # ─────────────────────────── 유튜브 ───────────────────────────
@@ -771,19 +908,46 @@ def build(session, out_path, want_transcript=True, img_dir=None):
     tr_miss = 0                    # 연속 자막 실패 횟수
     tr_dead = False                # 차단이 확인되면 이번 회차는 자막 시도를 접는다
 
+    sess_date = us_session_date(now)
+    is_open, closed_why = market_open(sess_date)
+    span_h = round((now - base).total_seconds() / 3600, 1)
+
     lines.append(f"# 브리핑 수집 번들 — {session}시 회차")
+    if not is_open:
+        # 번들 맨 위에 둔다. 브리핑이 제일 먼저 읽는 자리다.
+        lines.append(
+            f"\n## ★★ 오늘은 미국 휴장일이다 — 브리핑을 쓰지 마라 ★★\n\n"
+            f"미국 동부 기준 {sess_date} 는 **{closed_why}** 로 장이 열리지 않는다.\n\n"
+            f"아래 내용을 **한 줄로만** 출력하고 끝내라. [A]~[J] 섹션을 만들지 마라:\n\n"
+            f"> 미국 휴장({closed_why}, {sess_date}) — 이번 회차 브리핑 없음. "
+            f"이 구간의 내용은 장이 열리는 날 회차에 합쳐서 전달됩니다.\n\n"
+            f"이 구간에 쌓인 글은 버려지지 않는다. 다음 거래일 회차의 구간이 "
+            f"여기까지 자동으로 넓어져서 함께 다뤄진다.\n")
+    elif span_h > 20:
+        lines.append(
+            f"\n## ★ 휴장 뒤 첫 회차 — 구간이 평소보다 넓다 ★\n\n"
+            f"직전 거래일 이후 {span_h}시간이 밀려 있었다(연휴·주말). "
+            f"평소 한 회차보다 많이 들어오니 **중요도 순으로 추리되, "
+            f"[D]에서는 한 줄씩이라도 전부 남겨라.** 양이 많다고 요약하지 마라.\n")
+
     lines.append(f"생성: {now:%Y-%m-%d %H:%M} KST")
-    lines.append(f"기본 구간: {base:%m-%d %H:%M} ~ {now:%m-%d %H:%M}")
+    lines.append(f"미국 거래일: {sess_date} ({'개장' if is_open else '휴장 — ' + closed_why})")
+    lines.append(f"기본 구간: {base:%m-%d %H:%M} ~ {now:%m-%d %H:%M}  ({span_h}시간)")
     lines.append(f"확장 구간: {ext:%m-%d %H:%M} ~ {base:%m-%d %H:%M} (직전 회차 보충용)\n")
+
+    checks.append({"source": "시장/개장여부", "status": "OPEN" if is_open else "CLOSED",
+                   "미국거래일": str(sess_date), "사유": closed_why or "정상 거래일",
+                   "구간시간": span_h})
 
     # 텔레그램
     lines.append("\n## 텔레그램\n")
     for ch, desc in TELEGRAM:
         try:
-            posts, parsed = fetch_telegram(ch, ext)
+            posts, parsed, full = fetch_telegram(ch, ext)
             inw = [p for p in posts if p["dt"] >= base]
             inext = [p for p in posts if ext <= p["dt"] < base]
-            status = "ok" if parsed else "PARSE_FAIL"
+            # 페이지 한도에 걸려 구간 끝까지 못 갔으면 '앞부분이 잘렸다'는 뜻이다.
+            status = "ok" if parsed and full else ("TRUNCATED" if parsed else "PARSE_FAIL")
             # 섹터 맵은 insidertracking에 사진으로 올라온다 → 파일로 내려받아 둔다
             if ch == "insidertracking":
                 images = download_images(inw + inext, img_dir, ch)
@@ -1066,6 +1230,17 @@ def build(session, out_path, want_transcript=True, img_dir=None):
 
     text = "\n".join(lines)
     Path(out_path).write_text(text, encoding="utf-8")
+
+    # ★ 거래일에만 '여기까지 덮었다'를 적는다. 휴장일에는 적지 않는다.
+    #   그래야 연휴 뒤 첫 회차의 구간이 연휴 직전까지 저절로 넓어진다.
+    if is_open:
+        cov = load_coverage()
+        cov["last"] = now.isoformat(timespec="seconds")
+        cov["last_session"] = session
+        save_coverage(cov)
+    else:
+        print(f"휴장({closed_why}) — coverage 워터마크를 올리지 않는다. "
+              f"이 구간은 다음 거래일 회차가 덮는다.", file=sys.stderr)
 
     print(f"번들 저장: {out_path}  ({len(text):,}자)", file=sys.stderr)
     for c in checks:
