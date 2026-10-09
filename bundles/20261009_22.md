@@ -1,7 +1,7 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-10-09 09:42 KST
+생성: 2026-10-09 10:23 KST
 미국 거래일: 2026-10-08 (개장)
-기본 구간: 10-09 05:30 ~ 10-09 09:42  (4.2시간)
+기본 구간: 10-09 05:30 ~ 10-09 10:23  (4.9시간)
 확장 구간: 10-08 11:30 ~ 10-09 05:30 (직전 회차 보충용)
 
 
@@ -9,7 +9,7 @@
 
 
 ### bornlupin — 해외 리서치·증권사 리포트 (미국 중심, 최우선)
-구간 내 7건 / 확장 구간 12건 (페이지에서 파싱한 총 게시물 37건)
+구간 내 8건 / 확장 구간 12건 (페이지에서 파싱한 총 게시물 37건)
 
 **[10-09 06:50]**
 CNN) OpenAI 매출이 예상보다 낮다는 보도에 기술주 하락
@@ -86,6 +86,22 @@ OpenAI는 최근 투자자들에게 9월 기준 핵심 매출 지표가 500억 �
 최초 기사 게재 이후, 파이낸셜타임스(FT)는 기사를 수정
  OpenAI의 9월 연환산 순매출(Net Revenue)은 500억 달러, 총매출(Gross Revenue)은 700억 달러이다
 (노이즈 만들려고 작정하고 수정 엔딩)
+
+**[10-09 10:07]**
+엔비디아의 지원을 받는 루멘텀, 광학 부품 생산능력 2029년까지 완판 전망
+루멘텀 홀딩스(Lumentum Holdings Inc.)의 
+광학 부품 생산능력은 2029년 무렵까지 이미 완전히 판매된 상태다. 
+이는 기술기업들이
+ 더욱 빠른 AI 데이터센터 구축을 추진하면서 관련 수요가 급증하고 있기 때문이다.
+루멘텀은 올해 초 경쟁사 코히런트(Coherent Corp.)와 함께 엔비디아(Nvidia Corp.)로부터 각각 20억 달러 규모의 투자를 유치했다.
+ 양사는 고속 클라우드 컴퓨팅과 데이터 전송을 구현하는 데 필요한 첨단 인화인듐(InP) 부품을 공급한다.
+루멘텀의 마이클 헐스턴(Michael Hurlston)은
+ 루멘텀과 같은 기업들이 신규 생산능력을 확보하는 데 3~5년이 필요하다고 설명했다.
+그러나 그는 
+하이퍼스케일 기업들이 자본적 지출(CAPEX)에 따른 위험의 일부를 부담하기로 합의했다고 강조했다.
+"이들 하이퍼스케일 기업은 이러한 투자를 위해 자금을 투입할 의향이 있습니다."
+https://www.bloomberg.com/news/articles/2026-10-09/nvidia-backed-lumentum-sees-opto-parts-capacity-sold-out-to-2029
+[링크] Bloomberg.com / Nvidia-Backed Lumentum Sees Opto-Parts Capacity Sold Out to 2029 / Lumentum Holdings Inc.’s optoelectronic parts are “completely sold out” through almost 2029 on demand from tech companies clamoring for faster AI data centers.
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -334,7 +350,7 @@ https://www.cnbc.com/amp/2026/10/08/trump-august-trades-meta-spacex-financial-di
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 33건 / 확장 구간 44건 (페이지에서 파싱한 총 게시물 97건)
+구간 내 34건 / 확장 구간 44건 (페이지에서 파싱한 총 게시물 97건)
 
 **[10-09 06:40]**
 🌎
@@ -1055,6 +1071,9 @@ https://youtube.com/shorts/yDww8zIy0ec?feature=share
 트럼프 대통령, MAGA Inc. 오찬 참석
 📍
  트럼프 내셔널 골프 클럽 워싱턴 D.C. (Trump National Golf Club Washington DC)
+
+**[10-09 10:16]**
+민주당은 사기꾼들입니다. 이것이 진실입니다!
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -1784,7 +1803,7 @@ AI 지출의 정당성을 증명해야 하는 시간이 다가오고 있다.
 
 
 ### umbrellaresearch — 국내외 혼합, AWAKE 시장 한눈에 보기
-구간 내 3건 / 확장 구간 6건 (페이지에서 파싱한 총 게시물 19건)
+구간 내 4건 / 확장 구간 6건 (페이지에서 파싱한 총 게시물 19건)
 
 **[10-09 07:59]**
 (미국) 스페이스 X CDS 195bp의 의미 
@@ -1825,6 +1844,34 @@ Update:
 Following the initial publication, the Financial Times updated its story and said OpenAI's net revenue in September was $50B and its gross revenue was $70B, matching previous reporting.
 https://es.tradingview.com/news/seekingalpha%3Ad4f365ba3094b%3A0-oracle-microsoft-shares-decline-as-confusion-over-openai-s-arr-reigns/
 [링크] TradingView / Oracle, Microsoft shares decline as confusion over OpenAI's ARR reigns / Oracle NASDAQ:OPENAI and Microsoft NASDAQ:MSFT shares declined sharply on Thursday after the Financial Times said OpenAI's NASDAQ:OPENAI annualized recurring revenue was significantly less than previously reported.The media outlet said that OpenAI's annualized…
+
+**[10-09 09:59]**
+(미국) 스페이스 X CDS 195bp의 의미 
+https://t.me/umbrellareport/184
+삼기에너지솔루션즈 기본사항 정리 
+https://t.me/umbrellareport/183
+APLD 실적 발표 및 컨콜정리 
+https://t.me/umbrellareport/182
+저스템 컨콜 정리 
+https://t.me/umbrellareport/181
+제너셈 정리 
+https://t.me/umbrellareport/180
+솔브레인홀딩스 
+https://t.me/umbrellareport/179
+(미국) 펭귄솔루션즈 PENG 상승 이유 정리 
+https://t.me/umbrellareport/178
+키트루다 SC 유럽 8개국 판매금지 영향 정리 (알테오젠) 
+https://t.me/umbrellareport/177
+대만 마이크론 파업영향 가능성 정리 
+https://t.me/umbrellareport/176
+(대만) TAIFLEX 8039 상승 이유 및 기본사항 정리 
+https://t.me/umbrellareport/175
+프랑스 국채 문제 분석 및 정리, 영향 
+https://t.me/umbrellareport/174
+폐페스트 진단키트 기회 점검 
+https://t.me/umbrellareport/173
+케이씨텍 투자포인트 정리 
+https://t.me/umbrellareport/172
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -2123,12 +2170,12 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
   "미국거래일": "2026-10-08",
   "사유": "정상 거래일",
   "브리핑": true,
-  "구간시간": 4.2
+  "구간시간": 4.9
  },
  {
   "source": "tg/bornlupin",
   "status": "ok",
-  "in_window": 7,
+  "in_window": 8,
   "in_lookback": 12,
   "parsed": 37
  },
@@ -2148,7 +2195,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
  {
   "source": "tg/insidertracking",
   "status": "ok",
-  "in_window": 33,
+  "in_window": 34,
   "in_lookback": 44,
   "parsed": 97
  },
@@ -2162,7 +2209,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
  {
   "source": "tg/umbrellaresearch",
   "status": "ok",
-  "in_window": 3,
+  "in_window": 4,
   "in_lookback": 6,
   "parsed": 19
  },
