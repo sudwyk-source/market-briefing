@@ -1,7 +1,7 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-10-29 09:27 KST
+생성: 2026-10-29 10:11 KST
 미국 거래일: 2026-10-28 (개장)
-기본 구간: 10-29 05:30 ~ 10-29 09:27  (4.0시간)
+기본 구간: 10-29 05:30 ~ 10-29 10:11  (4.7시간)
 확장 구간: 10-28 11:30 ~ 10-29 05:30 (직전 회차 보충용)
 
 
@@ -2368,7 +2368,7 @@ https://naver.me/5DZJ2n24
 
 
 ### umbrellaresearch — 국내외 혼합, AWAKE 시장 한눈에 보기
-구간 내 9건 / 확장 구간 12건 (페이지에서 파싱한 총 게시물 40건)
+구간 내 12건 / 확장 구간 12건 (페이지에서 파싱한 총 게시물 40건)
 
 **[10-29 07:45]**
 미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261028종가)
@@ -2493,6 +2493,74 @@ https://www.etoday.co.kr/news/view/2641429
 2025.3Q 125억/ -9억/ -6억
 공시링크: 
 https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261029000004
+
+**[10-29 09:42]**
+[속보]한수원, 체코 두코바니 원전 시공계약 협상 최종 결렬
+https://www.fnnews.com/news/202610290914225725
+한국수력원자력이 체코 두코바니 신규 원전 건설사업의 시공을 맡을 예정이었던 대우건설·두산에너빌리티 컨소시엄과의 계약 협상을 최종 종료했다. 공사비 등 주요 계약조건을 둘러싼 이견을 좁히지 못하면서 신규 시공사 선정에 나서기로 했다.
+다만 원전 주기기 공급 등 다른 분야의 계약은 이미 체결된 상태다.
+ 한수원은 지난해 6월 체코 발주사인 EDUⅡ와 주계약을 체결한 이후 한전기술과 종합설계용역 계약을, 두산에너빌리티와 원자로설비 및 터빈발전기설비 공급계약을 각각 체결했다.
+[링크] 파이낸셜뉴스 / [속보]한수원, 체코 두코바니 원전 시공계약 협상 최종 결렬 / 한국수력원자력이 체코 두코바니 신규 원전 건설사업의 시공을 맡을 예정이었던 대우건설·두산에너빌리티 컨소시엄과의 계약 협상을 최종 종료했다. 공사비 등 주요 계약조건을 둘러싼 이견을 좁히지 못하면서 신규 시공사 선정에 나서기로 했다.29일 한수원에..
+
+**[10-29 10:00]**
+SK하이닉스 30주선 안착.. 
+https://t.me/umbrellareport/311
+(미국) 알파벳 실적 정리 
+https://t.me/umbrellareport/310
+(미국) VERTIV 실적발표 정리 
+https://t.me/umbrellareport/309
+미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261028종가) 
+https://t.me/umbrellareport/308
+사모펀드 매매동향 261029용 by Danny 
+https://t.me/umbrellareport/307
+SK하이닉스 3Q26 컨콜 시사점 
+https://t.me/umbrellareport/306
+https://contents.premium.naver.com/umbrellaresearch/richguy/contents/261028141651204tk
+ 
+https://t.me/umbrellareport/305
+서진시스템 : 적자 사업 정리 이후의 손익 구조 개선기대 
+https://t.me/umbrellareport/304
+코스피 개인 매도 1조면 바닥일까? 키는 외국인 
+https://t.me/umbrellareport/303
+어질리티로보틱스 IPO 11월 중순 나스닥 상장 
+https://t.me/umbrellareport/302
+엔비디아 GPU 내용연수 상향의 의미 
+https://t.me/umbrellareport/301
+11월 로봇 이벤트 점검 
+https://t.me/umbrellareport/300
+로체시스템즈 탐방 노트 점검 
+https://t.me/umbrellareport/299
+SK하이닉스 CAPEX 확대 관련 점검 
+https://t.me/umbrellareport/298
+(미국) 코닝 3Q 실적 정리 
+https://t.me/umbrellareport/296
+미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261027종가) 
+https://t.me/umbrellareport/295
+(미국) STX 씨게이트 실적발표 by Danny261028 
+https://t.me/umbrellareport/294
+ISC 가이던스 검증 
+https://t.me/umbrellareport/293
+아틀라스 1만대 오더 밸류체인분석 
+https://t.me/umbrellareport/292
+사모펀드 매매동향 261028용 by Danny 
+https://t.me/umbrellareport/291
+네이버-브룩필드 계약 점검 
+https://t.me/umbrellareport/290
+(미국) Celestica 실적 및 가이던스 
+https://t.me/umbrellareport/288
+(미국) 월풀 가이던스 하향 
+https://t.me/umbrellareport/287
+미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261026종가) 
+https://t.me/umbrellareport/286
+앤트로픽 S-1 공개 : 807억달러 손실은 영업적자가 아님 
+https://t.me/umbrellareport/285
+사모펀드 매매동향 261027용 by Danny 
+https://t.me/umbrellareport/284
+
+**[10-29 10:07]**
+* 삼성전자 3Q26 실적발표 자료
+2026_3Q_conference_kor.pdf
+https://images.samsung.com/kdp/ir/events/2026/2026_3Q_conference_kor.pdf
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -3008,7 +3076,7 @@ After LITE +12%, MRVL -10%
   "미국거래일": "2026-10-28",
   "사유": "정상 거래일",
   "브리핑": true,
-  "구간시간": 4.0
+  "구간시간": 4.7
  },
  {
   "source": "tg/bornlupin",
@@ -3047,7 +3115,7 @@ After LITE +12%, MRVL -10%
  {
   "source": "tg/umbrellaresearch",
   "status": "ok",
-  "in_window": 9,
+  "in_window": 12,
   "in_lookback": 12,
   "parsed": 40
  },
