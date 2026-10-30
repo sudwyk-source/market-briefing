@@ -1,7 +1,7 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-10-30 09:28 KST
+생성: 2026-10-30 10:19 KST
 미국 거래일: 2026-10-29 (개장)
-기본 구간: 10-30 05:30 ~ 10-30 09:28  (4.0시간)
+기본 구간: 10-30 05:30 ~ 10-30 10:19  (4.8시간)
 확장 구간: 10-29 11:30 ~ 10-30 05:30 (직전 회차 보충용)
 
 
@@ -280,7 +280,7 @@ AgentCore: 수만 명의 고객 확보. 3분기에 배포된 에이전트 수 2�
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 52건 / 확장 구간 59건 (페이지에서 파싱한 총 게시물 120건)
+구간 내 54건 / 확장 구간 59건 (페이지에서 파싱한 총 게시물 120건)
 
 **[10-30 05:36]**
 🌎
@@ -1333,6 +1333,13 @@ https://asia.nikkei.com/business/business-deals/operator-of-south-korea-s-toss-a
 인텔은 3분기 데이터센터 매출이 전년 대비 약 80% 증가하고 18A 공정 수율이 업계 표준에 도달하면서 뚜렷한 실적 회복세를 확인. 특히 AI 서버 수요 확대와 차세대 CPU·GPU 및 첨단 패키징 기술은 장기 성장의 핵심 동력. 다만 PC 시장 위축, 이스라엘 공장 사고, 기판 공급 부족과 파운드리 적자가 단기 부담으로 작용. 2027년에는 설비투자 확대에 따른 현금흐름 악화도 예상됨. 향후 성장 지속 여부는 데이터센터 수요 확대, 18A 양산 안정화, 공급망 개선 및 파운드리 적자 축소에 달려 있다는 평가.
 애프터마켓 22% 하락
 
+**[10-30 10:00]**
+미국 레딧 관심도
+구글, 아마존, 인텔, 레딧
+
+**[10-30 10:17]**
+코인 관련주 하락 이유
+
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
 
@@ -2126,7 +2133,7 @@ insidertrading500@gmail.com
 
 
 ### TNBfolio — 뉴스 번역 (원 출처 명시형)
-구간 내 4건 / 확장 구간 15건 (페이지에서 파싱한 총 게시물 20건)
+구간 내 5건 / 확장 구간 15건 (페이지에서 파싱한 총 게시물 40건)
 
 **[10-30 07:35]**
 속보: 마이크로소프트가 9년여 만에 처음으로 약 250억 달러 규모의 미국 투자등급 회사채 발행에 나선다.
@@ -2182,6 +2189,19 @@ STAR 50의 주가수익비율(P/E)은 여전히 약 100배로, 나스닥 100의 
 중국 정부는 6,000억 위안(약 900억 달러) 규모의 국가 AI 투자펀드를 출범하고 가계에 주식 투자를 독려했지만, 내수 부진과 가격 전쟁, 실적 부진이 정책 효과를 상쇄하고 있다.
 시장에서는 주가 급락으로 기술 기업들의 IPO가 보류되고 주식 자금 조달이 막힐 수 있다는 경고가 나온다.
 '국가가 띄운 기술 랠리도 이익 없이는 버티지 못한다.'
+@TNBfolio
+
+**[10-30 09:44]**
+속보: 우크라이나군이 트럼프 대통령의 수주간 압박 이후 러시아 정유시설에 대한 공습을 일시 중단했다.
+비공식 중단은 지난주 초 미·우크라이나 관계가 위기의 정점에 달했을 때 시작됐다.
+이번 중단은 미국 중간선거 이후까지 이어질 것으로 예상되며, 11월 중 더 길어질 가능성도 있다.
+그 며칠 전 트럼프 대통령은 젤렌스키 대통령의 퇴진을 요구했고, 스페이스X는 우크라이나의 스타링크 사용을 제한했다.
+장거리 타격 부대들은 10월 중순 이미 진행 중인 임무를 마친 뒤 정유시설 작전을 사실상 보류하라는 통보를 받았다.
+우크라이나 정부는 공식적으로 중단을 발표하지 않았으며, 젤렌스키 대통령은 정유시설 타격을 금지하는 명령은 없다고 밝혔다.
+젤렌스키 대통령은 자국 에너지 인프라에 대한 보호를 강화해 준다면 공습을 자제할 수 있다는 입장이다.
+반면 러시아는 겨울을 앞두고 우크라이나 에너지 인프라와 도시에 대한 미사일·드론 공격을 계속 확대하고 있다.
+트럼프 대통령은 지난해 백악관 복귀 이후 대부분의 군사·재정 지원을 끊었지만, 우크라이나는 여전히 스타링크, 미국 정보 공유, 패트리엇 요격미사일에 의존하고 있다.
+'우크라이나의 가장 효과적인 카드가 워싱턴의 손에 묶였다.'
 @TNBfolio
 
 
@@ -2357,7 +2377,7 @@ SK하이닉스가 잉여현금흐름(FCF)의 50% 환원 상한까지 없애겠�
 
 
 ### umbrellaresearch — 국내외 혼합, AWAKE 시장 한눈에 보기
-구간 내 4건 / 확장 구간 12건 (페이지에서 파싱한 총 게시물 20건)
+구간 내 6건 / 확장 구간 12건 (페이지에서 파싱한 총 게시물 20건)
 
 **[10-30 07:23]**
 아마존 실적 정리 by Danny 261029
@@ -2459,6 +2479,67 @@ https://t.me/umbrellareport/291
 https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261030800002
 종목공시 : 
 https://www.awakeplus.co.kr/disclosure/128940
+
+**[10-30 10:00]**
+(미국) 샌디스크 실적 요약 
+https://t.me/umbrellareport/319
+(미국) 인텔 INTL 실적발표 및 시사점 
+https://t.me/umbrellareport/318
+(미국) 아마존 실적 정리 
+https://t.me/umbrellareport/317
+사모펀드 매매동향 261030용 by Danny 
+https://t.me/umbrellareport/316
+OCI홀딩스 3Q26 실적 및 시사점 
+https://t.me/umbrellareport/315
+한화에어로스페이스 3Q26 실적 및 시사점 
+https://t.me/umbrellareport/314
+현대차 Q26 실적 점검 
+https://t.me/umbrellareport/313
+삼성전자 3Q26 컨콜 내용 정리 (+주주환원 포함) by Danny 
+https://t.me/umbrellareport/312
+(미국) 알파벳 실적 정리 
+https://t.me/umbrellareport/310
+(미국) VERTIV 실적발표 정리 
+https://t.me/umbrellareport/309
+미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261028종가) 
+https://t.me/umbrellareport/308
+사모펀드 매매동향 261029용 by Danny 
+https://t.me/umbrellareport/307
+SK하이닉스 3Q26 컨콜 시사점 
+https://t.me/umbrellareport/306
+https://contents.premium.naver.com/umbrellaresearch/richguy/contents/261028141651204tk
+ 
+https://t.me/umbrellareport/305
+서진시스템 : 적자 사업 정리 이후의 손익 구조 개선기대 
+https://t.me/umbrellareport/304
+코스피 개인 매도 1조면 바닥일까? 키는 외국인 
+https://t.me/umbrellareport/303
+어질리티로보틱스 IPO 11월 중순 나스닥 상장 
+https://t.me/umbrellareport/302
+엔비디아 GPU 내용연수 상향의 의미 
+https://t.me/umbrellareport/301
+11월 로봇 이벤트 점검 
+https://t.me/umbrellareport/300
+로체시스템즈 탐방 노트 점검 
+https://t.me/umbrellareport/299
+SK하이닉스 CAPEX 확대 관련 점검 
+https://t.me/umbrellareport/298
+(미국) 코닝 3Q 실적 정리 
+https://t.me/umbrellareport/296
+미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261027종가) 
+https://t.me/umbrellareport/295
+(미국) STX 씨게이트 실적발표 by Danny261028 
+https://t.me/umbrellareport/294
+ISC 가이던스 검증 
+https://t.me/umbrellareport/293
+아틀라스 1만대 오더 밸류체인분석 
+https://t.me/umbrellareport/292
+사모펀드 매매동향 261028용 by Danny 
+https://t.me/umbrellareport/291
+
+**[10-30 10:03]**
+TAIWANESE EQUITIES FALL OVER 2% IN MARKET TRADING 
+...
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -2762,7 +2843,7 @@ https://naver.me/59lYYoh9
 
 
 ### autoteamkorea — 한투 자동차 섹터
-구간 내 3건 / 확장 구간 8건 (페이지에서 파싱한 총 게시물 20건)
+구간 내 6건 / 확장 구간 8건 (페이지에서 파싱한 총 게시물 20건)
 
 **[10-30 07:42]**
 [한투증권 김창호/전유나] 자동차/모빌리티 산업
@@ -2835,6 +2916,23 @@ https://vo.la/xDCbdcZ
 https://t.me/autoteamkorea
 >> 보고서 링크: 
 https://vo.la/ej7pWSP
+
+**[10-30 09:52]**
+현대모비스 실적 중 긍정적인 내용은 
+핵심부품 부문 흑자구조 유지
+(반도체 가격 등 원가 상승 압력에서도 전동화 부품 손익 개선 영향이 큰 것으로 파악)
+
+**[10-30 09:53]**
+<현대모비스 3Q26 실적>
+- 매출액: 15.7조원(+4.6% YoY, 컨센 부합)
+- 영업이익: 9,141억원(+17.2% YoY, 컨센 부합)
+- 영업이익률: 5.8%(+0.6%p YoY, 컨센 부합)
+- 연결당기순이익(지배): 5,979억원(-35.7% YoY, 컨센 -40.2% 하회)
+
+**[10-30 09:54]**
+현대모비스 실적 중 부정적인 내용은 2026년 
+3분기까지의 누계 수주 실적이 연간 계획 대비 13%
+에 불과
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -3190,7 +3288,7 @@ https://youtu.be/CUh-4ROZJWc
   "미국거래일": "2026-10-29",
   "사유": "정상 거래일",
   "브리핑": true,
-  "구간시간": 4.0
+  "구간시간": 4.8
  },
  {
   "source": "tg/bornlupin",
@@ -3215,28 +3313,28 @@ https://youtu.be/CUh-4ROZJWc
  {
   "source": "tg/insidertracking",
   "status": "ok",
-  "in_window": 52,
+  "in_window": 54,
   "in_lookback": 59,
   "parsed": 120
  },
  {
   "source": "tg/TNBfolio",
   "status": "ok",
-  "in_window": 4,
+  "in_window": 5,
   "in_lookback": 15,
-  "parsed": 20
+  "parsed": 40
  },
  {
   "source": "tg/umbrellaresearch",
   "status": "ok",
-  "in_window": 4,
+  "in_window": 6,
   "in_lookback": 12,
   "parsed": 20
  },
  {
   "source": "tg/autoteamkorea",
   "status": "ok",
-  "in_window": 3,
+  "in_window": 6,
   "in_lookback": 8,
   "parsed": 20
  },
