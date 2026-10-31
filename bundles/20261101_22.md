@@ -10,9 +10,9 @@
 
 이 구간의 글은 버려지지 않는다. 휴장이 끝나는 회차의 구간이 여기까지 자동으로 넓어진다.
 
-생성: 2026-11-01 02:21 KST
+생성: 2026-11-01 02:31 KST
 미국 거래일: 2026-10-31 (휴장(토요일))
-기본 구간: 10-31 05:30 ~ 11-01 02:21  (20.9시간)
+기본 구간: 10-31 05:30 ~ 11-01 02:31  (21.0시간)
 확장 구간: 10-30 11:30 ~ 10-31 05:30 (직전 회차 보충용)
 
 
@@ -2558,7 +2558,7 @@ EXTREME FEAR 근접
 
 ## finviz 맵 데이터
 
-종목 5904개의 등락률을 받았다(그림이 아니라 수치). 주소: https://finviz.com/api/map_perf.ashx?t=sec_all
+종목 5893개의 등락률을 받았다(그림이 아니라 수치). 주소: https://finviz.com/api/map_perf.ashx?t=sec_all
 
 상승 상위 15: ONEG +108.15%, CHOW +106.57%, SGRX +83.51%, SLGB +48.98%, GDYN +40.78%, FMC +30.53%, ASUR +30.15%, NFE +29.82%, ULH +29.68%, MF +27.68%, TNMG +27.54%, OSPN +27.34%, ZJYL +26.34%, ACCO +26.15%, BYSI +24.60%
 
@@ -2575,7 +2575,7 @@ EXTREME FEAR 근접
   "미국거래일": "2026-10-31",
   "사유": "토요일",
   "브리핑": false,
-  "구간시간": 20.9
+  "구간시간": 21.0
  },
  {
   "source": "tg/bornlupin",
@@ -2668,7 +2668,7 @@ EXTREME FEAR 근접
  {
   "source": "finviz/map",
   "status": "ok",
-  "entries": 5904,
+  "entries": 5893,
   "url": "https://finviz.com/api/map_perf.ashx?t=sec_all"
  }
 ]
