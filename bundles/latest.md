@@ -1,8 +1,8 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-11-04 09:53 KST
+생성: 2026-11-04 09:55 KST
 미국 거래일: 2026-11-03 (개장)
-기본 구간: 11-04 05:19 ~ 11-04 09:53  (4.6시간)
-확장 구간: 11-03 11:19 ~ 11-04 05:19 (직전 회차 보충용)
+기본 구간: 11-04 05:30 ~ 11-04 09:55  (4.4시간)
+확장 구간: 11-03 11:30 ~ 11-04 05:30 (직전 회차 보충용)
 
 
 ## 텔레그램
@@ -580,7 +580,7 @@ SK하이닉스, 펭귄 솔루션스(Penguin Solutions) 지분 9.1% 보유 공시
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 35건 / 확장 구간 45건 (페이지에서 파싱한 총 게시물 98건)
+구간 내 35건 / 확장 구간 44건 (페이지에서 파싱한 총 게시물 98건)
 
 **[11-04 06:02]**
 🌎
@@ -1494,12 +1494,6 @@ https://www.bloomberg.com/graphics/2026-us-election-results/?leadSource=uverify%
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
 
-**[11-03 11:23]**
-디인포메이션에 따르면 미국의 수출 규제는 고대역폭메모리(HBM)의 중국 단독 수출을 제한하지만, 저성능 서버 프로세서와 함께 묶어 수출하는 것은 허용.
-이러한 규제 허점으로 인해 밀수업자들이 수출 제한 대상인 HBM 반도체를 중국으로 반입할 수 있는 경로가 형성된 것으로 보도.
-https://www.theinformation.com/articles/smugglers-get-expensive-memory-chips-china-south-korea
-[링크] The Information / How Smugglers Get Expensive Memory Chips to China from South Korea / For an illustration of how porous U.S. restrictions on the shipment of AI chips to China can be, consider a technique that has begun to catch on among smugglers involving a key type of memory chip. While U.S. export regulations ban the shipment of high-bandwidth…
-
 **[11-03 11:37]**
 팔란티어(PLTR) Q3 2026 어닝콜 요약
 🟢
@@ -2282,7 +2276,7 @@ insidertrading500@gmail.com
 
 
 ### TNBfolio — 뉴스 번역 (원 출처 명시형)
-구간 내 4건 / 확장 구간 14건 (페이지에서 파싱한 총 게시물 20건)
+구간 내 5건 / 확장 구간 14건 (페이지에서 파싱한 총 게시물 20건)
 
 **[11-04 08:07]**
 속보: 인공지능(AI) 관련 기업의 신용부도스와프(CDS) 순명목잔액이 코어위브를 제외하고도 약 300억 달러에 육박했다.
@@ -2328,6 +2322,9 @@ SK하이닉스는 2020년 인텔의 다롄 낸드 공장을 90억 달러에 인�
 
 **[11-04 09:39]**
 [본문 없는 게시물 — 사진] https://t.me/TNBfolio/71845
+
+**[11-04 09:55]**
+[본문 없는 게시물 — 사진] https://t.me/TNBfolio/71846
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -3003,7 +3000,7 @@ AMD 2026년 3분기 실적 요약
   "미국거래일": "2026-11-03",
   "사유": "정상 거래일",
   "브리핑": true,
-  "구간시간": 4.6
+  "구간시간": 4.4
  },
  {
   "source": "tg/bornlupin",
@@ -3029,13 +3026,13 @@ AMD 2026년 3분기 실적 요약
   "source": "tg/insidertracking",
   "status": "ok",
   "in_window": 35,
-  "in_lookback": 45,
+  "in_lookback": 44,
   "parsed": 98
  },
  {
   "source": "tg/TNBfolio",
   "status": "ok",
-  "in_window": 4,
+  "in_window": 5,
   "in_lookback": 14,
   "parsed": 20
  },
