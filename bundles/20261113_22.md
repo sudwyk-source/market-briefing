@@ -1,7 +1,7 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-11-13 10:28 KST
+생성: 2026-11-13 10:31 KST
 미국 거래일: 2026-11-12 (개장)
-기본 구간: 11-13 05:30 ~ 11-13 10:28  (5.0시간)
+기본 구간: 11-13 05:30 ~ 11-13 10:31  (5.0시간)
 확장 구간: 11-12 11:30 ~ 11-13 05:30 (직전 회차 보충용)
 
 
@@ -1863,7 +1863,7 @@ https://naver.me/GUT9dzSG
 
 
 ### umbrellaresearch — 국내외 혼합, AWAKE 시장 한눈에 보기
-구간 내 13건 / 확장 구간 14건 (페이지에서 파싱한 총 게시물 40건)
+구간 내 14건 / 확장 구간 14건 (페이지에서 파싱한 총 게시물 40건)
 
 **[11-13 05:50]**
 📌
@@ -2091,6 +2091,11 @@ https://t.me/umbrellareport/408
 https://t.me/umbrellareport/407
 사모펀드 매매동향 261111용 by Danny 
 https://t.me/umbrellareport/406
+
+**[11-13 10:30]**
+이런 아이디어도 있네요
+https://m.blog.naver.com/PostView.naver?blogId=doctordk&logNo=224474656664&proxyReferer=&noTrackingCode=true
+[링크] NAVER / 젠슨 황의 사임이 오히려 증시 폭등의 도화선이 될 수도 있다 / 시장이 젠슨 황의 사임 가능성에 공포를 느끼고 있다. 엔비디아 이사회가 젠슨 황의 해임 여부를 논의하고 ...
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -2728,7 +2733,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
  {
   "source": "tg/umbrellaresearch",
   "status": "ok",
-  "in_window": 13,
+  "in_window": 14,
   "in_lookback": 14,
   "parsed": 40
  },
