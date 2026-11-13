@@ -1,7 +1,7 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-11-13 11:05 KST
+생성: 2026-11-13 11:18 KST
 미국 거래일: 2026-11-12 (개장)
-기본 구간: 11-13 05:30 ~ 11-13 11:05  (5.6시간)
+기본 구간: 11-13 05:30 ~ 11-13 11:18  (5.8시간)
 확장 구간: 11-12 11:30 ~ 11-13 05:30 (직전 회차 보충용)
 
 
@@ -362,7 +362,7 @@ CEO 발언:
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 41건 / 확장 구간 46건 (페이지에서 파싱한 총 게시물 98건)
+구간 내 42건 / 확장 구간 46건 (페이지에서 파싱한 총 게시물 98건)
 
 **[11-13 06:03]**
 🌎
@@ -1083,6 +1083,12 @@ https://thehill.com/homenews/administration/6217391-trump-wants-cuba-change/
 이번 조사는 뉴욕 맨해튼 연방검찰이 주도하고 있으며, 기존 반도체 밀수 사건들과 연관된 조사인지는 확인되지 않은 상태.
 https://www.bloomberg.com/news/articles/2026-11-12/us-probing-if-alice-huang-helped-smuggle-super-micro-products
 [링크] Bloomberg.com / US Probing If Alice Huang Helped Smuggle Super Micro Products / The Justice Department is probing Alice Huang, the woman US officials suspect as a possible spy targeting the ousted head of Nvidia Corp., over whether entities linked to her were involved in efforts to smuggle products made by Super Micro Computer Inc. to…
+
+**[11-13 11:06]**
+블룸버그에 따르면 젠슨 황이 엔비디아 CEO에서 물러나기 직전 이사회가 늦은 밤까지 회의를 진행했으며, 결국 사임 외에는 선택지가 없는 상황에 놓였던 것으로 알려짐.
+당시 젠슨 황은 평소 주도적이고 강한 모습과 달리 크게 무너진 모습을 보였으며, “아무래도 상관없다”, “신경 쓰지 않는다”는 취지의 말을 하기 시작한 것으로 전해짐.
+이후 젠슨 황은 자신을 “쓰레기 같은 인간”이라고 표현했으며, 자신에게 앞으로 어떤 일이 벌어지는지는 더 이상 신경 쓰지 않는다고 말한 것으로 알려짐.
+현재 가장 우려하는 부분은 자신의 아내와 이번 사건에 연루된 여성들의 삶을 “망치지 않는 것”이라고 밝힌 것으로 전해짐.
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -2694,7 +2700,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
   "미국거래일": "2026-11-12",
   "사유": "정상 거래일",
   "브리핑": true,
-  "구간시간": 5.6
+  "구간시간": 5.8
  },
  {
   "source": "tg/bornlupin",
@@ -2719,7 +2725,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
  {
   "source": "tg/insidertracking",
   "status": "ok",
-  "in_window": 41,
+  "in_window": 42,
   "in_lookback": 46,
   "parsed": 98
  },
