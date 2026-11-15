@@ -10,9 +10,9 @@
 
 이 구간의 글은 버려지지 않는다. 휴장이 끝나는 회차의 구간이 여기까지 자동으로 넓어진다.
 
-생성: 2026-11-15 09:24 KST
+생성: 2026-11-15 10:15 KST
 미국 거래일: 2026-11-14 (휴장(토요일))
-기본 구간: 11-14 10:55 ~ 11-15 09:24  (22.5시간)
+기본 구간: 11-14 10:55 ~ 11-15 10:15  (23.3시간)
 확장 구간: 11-13 16:55 ~ 11-14 10:55 (직전 회차 보충용)
 
 
@@ -138,7 +138,7 @@ https://standwithjensen.com/#sign
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 41건 / 확장 구간 47건 (페이지에서 파싱한 총 게시물 93건)
+구간 내 43건 / 확장 구간 47건 (페이지에서 파싱한 총 게시물 93건)
 
 **[11-14 11:21]**
 📺
@@ -566,6 +566,15 @@ https://standwithjensen.com/#letter
 #마라톤
  
 #광고아님
+
+**[11-15 09:44]**
+미국 레딧 관심도는 엔비디아, 비트코인에 집중
+
+**[11-15 09:50]**
+선거 직후 주식시장에서 3조 달러의 가치가 증발했다는 사실을 알아차린 사람이 있는가?
+다시 말해, 전 세계 투자자들은 선거 당일 벌어진 일을 지켜보며 극도로 실망했다는 뜻이다.
+하지만 걱정할 필요는 없다. 이후 주식시장은 다시 상승했고, 미국은 머지않아 역사상 그 어느 때보다 더 위대한 나라가 될 것이다!
+도널드 J. 트럼프 대통령
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -1346,7 +1355,7 @@ https://youtube.com/shorts/grv9KbH7H7I?si=W2OolLU2JgWyXvBo
 
 
 ### umbrellaresearch — 국내외 혼합, AWAKE 시장 한눈에 보기
-구간 내 11건 / 확장 구간 8건 (페이지에서 파싱한 총 게시물 20건)
+구간 내 12건 / 확장 구간 8건 (페이지에서 파싱한 총 게시물 40건)
 
 **[11-14 13:30]**
 앤트로픽 상장 스트레스테스트와 한국 시장 
@@ -1556,6 +1565,35 @@ https://wallstreetcn.com/articles/3785944#from=ios
 어찌보면 다 아는 사실
 
 **[11-15 08:00]**
+미국 성장의 정점 가능성과 한국 영향 
+https://t.me/umbrellareport/447
+사모펀드 매매동향 261116용 by Danny 
+https://t.me/umbrellareport/446
+마이클 버리의 기술주 하락 베팅 확대 
+https://t.me/umbrellareport/445
+앤트로픽 상장 스트레스테스트와 한국 시장 
+https://t.me/umbrellareport/444
+미국 PPI 와 영향 
+https://t.me/umbrellareport/442
+(미국) CISCO 1분기 실적 및 시사점 
+https://t.me/umbrellareport/441
+https://contents.premium.naver.com/umbrellaresearch/richguy/contents/261113140026344mf
+ 
+https://t.me/umbrellareport/440
+제우스 : 연결 적자의 원인인 일본 JET 흑자로 턴어라운드 
+https://t.me/umbrellareport/439
+인텍플러스: 수주는 쌓였고 손익은 2027년 
+https://t.me/umbrellareport/437
+AMD 상승과 AI 기판 공급망 다변화 점검 
+https://t.me/umbrellareport/436
+미국 시장 등락 상위, 하위 종목스크리닝 by Danny (261112종가) 
+https://t.me/umbrellareport/435
+(미국) AMAT 4Q실적 및 시사점 
+https://t.me/umbrellareport/434
+엘리스황의 블랙웰 보급을 보장하고 딥시크 주식을 받은 것에 대한 시나리오 
+https://t.me/umbrellareport/433
+
+**[11-15 10:00]**
 미국 성장의 정점 가능성과 한국 영향 
 https://t.me/umbrellareport/447
 사모펀드 매매동향 261116용 by Danny 
@@ -1949,7 +1987,7 @@ X에서 BofA Bull & Bear Indicator 검색하고 Latest(최신) 포스트 검색�
   "미국거래일": "2026-11-14",
   "사유": "토요일",
   "브리핑": false,
-  "구간시간": 22.5
+  "구간시간": 23.3
  },
  {
   "source": "tg/bornlupin",
@@ -1974,7 +2012,7 @@ X에서 BofA Bull & Bear Indicator 검색하고 Latest(최신) 포스트 검색�
  {
   "source": "tg/insidertracking",
   "status": "ok",
-  "in_window": 41,
+  "in_window": 43,
   "in_lookback": 47,
   "parsed": 93
  },
@@ -1988,9 +2026,9 @@ X에서 BofA Bull & Bear Indicator 검색하고 Latest(최신) 포스트 검색�
  {
   "source": "tg/umbrellaresearch",
   "status": "ok",
-  "in_window": 11,
+  "in_window": 12,
   "in_lookback": 8,
-  "parsed": 20
+  "parsed": 40
  },
  {
   "source": "tg/autoteamkorea",
