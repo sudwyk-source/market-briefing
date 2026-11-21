@@ -1,7 +1,7 @@
 # 브리핑 수집 번들 — 22시 회차
-생성: 2026-11-21 11:46 KST
+생성: 2026-11-21 11:56 KST
 미국 거래일: 2026-11-20 (개장)
-기본 구간: 11-21 05:30 ~ 11-21 11:46  (6.3시간)
+기본 구간: 11-21 05:30 ~ 11-21 11:56  (6.4시간)
 확장 구간: 11-20 11:30 ~ 11-21 05:30 (직전 회차 보충용)
 
 
@@ -9,7 +9,7 @@
 
 
 ### bornlupin — 해외 리서치·증권사 리포트 (미국 중심, 최우선)
-구간 내 3건 / 확장 구간 4건 (페이지에서 파싱한 총 게시물 20건)
+구간 내 4건 / 확장 구간 4건 (페이지에서 파싱한 총 게시물 20건)
 
 **[11-21 08:51]**
 다음주 경제 일정
@@ -124,6 +124,17 @@
 - 플래시메모리(낸드) 수출단가는 $104,462/kg로 전년 대비 +298%, 전월 대비 0%
 - SSD 수출단가는 $24,801/kg로 전년 대비 +400%, 전월 대비 +35%
 - MCP(HBM) 수출단가는 $94,382/kg로 전년 대비 +139%, 전월 대비 +2%
+
+**[11-21 11:54]**
+[단독] 소프트뱅크 손정의, SK하이닉스 1조 달러 규모의 초대형 인수 추진 검토
+소프트뱅크의 손정의 회장이 메모리 반도체 대기업 SK하이닉스를 인수하기 위해 1조 달러(약 1,470조 원) 규모의 자금 조달 가능성을 최근 월가 금융기관들과 논의한 것으로 알려졌다.
+사안에 정통한 관계자들에 따르면, 손 회장은 SK하이닉스 인수를 위한 초대형 거래의 자금 조달 방안을 월스트리트 금융기관들에 타진했다.
+다만 소프트뱅크 대변인은 
+손 회장이 현재 해당 인수 거래를 적극적으로 검토하고 있지는 않다
+고 밝혔다.
+대변인은 “소프트뱅크는 다양한 가능성을 검토하고 있다…”라고 설명했다.
+https://www.theinformation.com/articles/softbanks-masayoshi-son-explored-1-trillion-moonshot-buyout-sk-hynix
+[링크] The Information / SoftBank’s Masayoshi Son Explored $1 Trillion Moonshot Buyout of SK Hynix / SoftBank CEO Masayoshi Son recently approached Wall Street institutions about financing a possible trillion-dollar buyout of memory chip giant SK Hynix, according to people familiar with the matter, though a spokesperson said he’s no longer actively considering…
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -2420,12 +2431,12 @@ X에서 BofA Bull & Bear Indicator 검색하고 Latest(최신) 포스트 검색�
   "미국거래일": "2026-11-20",
   "사유": "정상 거래일",
   "브리핑": true,
-  "구간시간": 6.3
+  "구간시간": 6.4
  },
  {
   "source": "tg/bornlupin",
   "status": "ok",
-  "in_window": 3,
+  "in_window": 4,
   "in_lookback": 4,
   "parsed": 20
  },
