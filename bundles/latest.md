@@ -10,9 +10,9 @@
 
 이 구간의 글은 버려지지 않는다. 휴장이 끝나는 회차의 구간이 여기까지 자동으로 넓어진다.
 
-생성: 2026-11-22 10:32 KST
+생성: 2026-11-22 10:49 KST
 미국 거래일: 2026-11-21 (휴장(토요일))
-기본 구간: 11-21 11:56 ~ 11-22 10:32  (22.6시간)
+기본 구간: 11-21 11:56 ~ 11-22 10:49  (22.9시간)
 확장 구간: 11-20 17:56 ~ 11-21 11:56 (직전 회차 보충용)
 
 
@@ -228,7 +228,7 @@ https://www.theinformation.com/articles/softbanks-masayoshi-son-explored-1-trill
 
 
 ### insidertracking — 속보·지정학·정책, 프리마켓 브리핑 (미국 중심, 최우선)
-구간 내 38건 / 확장 구간 52건 (페이지에서 파싱한 총 게시물 109건)
+구간 내 39건 / 확장 구간 52건 (페이지에서 파싱한 총 게시물 109건)
 
 **[11-21 12:47]**
 3연벙
@@ -622,6 +622,9 @@ UKMTO는 10월 16일 주간 보고서에서 대부분의 해상 사고가 공식
 느슨하게 연결된 이들 관계자는 불법 거래를 통해 수십억 달러의 수익을 올렸으며, 각 참여자가 전체 거래 구조와 운영 규모를 모두 인지하고 있었던 것은 아닐 가능성도 제기.
 https://www.ft.com/content/f3ad8a81-3890-4a8a-8853-ff0a94b08ba9
 [링크] Ft / Alice Huang’s links to the chip underworld / Chinese executive romantically linked to former Nvidia CEO Jensen Huang had connections to the lucrative trade moving chips to China
+
+**[11-22 10:43]**
+일론 머스크는 인공지능(AI) 산업의 자금 부족이 "내년에 심각한 상황이 될 것"이라고 경고하며, 수익을 창출하기 전까지 발생하는 지연을 감당하는 데에도 수백억 달러가 필요할 것이라고 밝힘.
 
 
 <확장 구간 — 직전 회차에서 빠졌을 수 있음>
@@ -2095,7 +2098,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
   "미국거래일": "2026-11-21",
   "사유": "토요일",
   "브리핑": false,
-  "구간시간": 22.6
+  "구간시간": 22.9
  },
  {
   "source": "tg/bornlupin",
@@ -2120,7 +2123,7 @@ images/ 에 12장 저장. 가장 최근 것이 섹터 맵일 가능성이 높다
  {
   "source": "tg/insidertracking",
   "status": "ok",
-  "in_window": 38,
+  "in_window": 39,
   "in_lookback": 52,
   "parsed": 109
  },
